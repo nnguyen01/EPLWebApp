@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
 
+# Updating (Cybera VM)
+1. Build the web app on your machine using 
+`ng build --prod`
+2. Push new build to github and pull the new changes on github.
+3. Navigate to where the dist folder is located 
+4. Copy all contents of the dist folder into /var/www/html/ using
+' sudo cp -a dist/* /var/www/html/'
+5. Go to http://162.246.156.95/
 
 
 # RYAN's setup steps
