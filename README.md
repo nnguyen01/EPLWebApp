@@ -29,7 +29,7 @@ OSX: http://blog.teamtreehouse.com/install-node-js-npm-mac
 then
 - `ng serve`
 
-4. keeping that command line/terminal running 'ng serve', open chrome/firefox and go to "localhost:4200" in the URL bar.
+4. keeping that command line/terminal running `ng serve`, open chrome/firefox and go to http://localhost:4200 in the URL bar.
 
 
 
