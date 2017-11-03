@@ -11,7 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 3. Pull the new changes on github.
 4. Navigate to where the dist folder is located 
 5. Copy all contents of the dist folder into /var/www/html/ using
-' sudo cp -a dist/* /var/www/html/'
+`sudo cp -a dist/* /var/www/html/`
 ### On your machine
 6. To test and see web app go to http://162.246.156.95/ 
 
@@ -22,12 +22,12 @@ WINDOWS: http://blog.teamtreehouse.com/install-node-js-npm-windows
 OSX: http://blog.teamtreehouse.com/install-node-js-npm-mac
 
 2. make sure angular cli installed on your machine
-'npm install -g @angular/cli'
+`npm install -g @angular/cli`
 
 3. open command line/terminal in EPLScavengerHuntWebApp folder of our repo, and run:
-- 'npm install'
+- `npm install`
 then
-- 'ng serve'
+- `ng serve`
 
 4. keeping that command line/terminal running 'ng serve', open chrome/firefox and go to "localhost:4200" in the URL bar.
 
