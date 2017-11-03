@@ -1,16 +1,26 @@
+import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { RouterModule }   from '@angular/router';
+
 import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
+import { LandingComponent } from '../landing/landing.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     AlertModule.forRoot(),
-    BrowserModule
+    BrowserModule,
+	RouterModule.forRoot([
+      {
+        path: 'landing',
+        component: LandingComponent
+      }
+    ])
+  ],
+  declarations: [
+    AppComponent,
+	LandingComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

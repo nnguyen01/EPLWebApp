@@ -10,14 +10,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- Default location -->
-	<base href="/">
+	<base href="../">
 	
 	<!-- Load Bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<app-root></app-root>
+	<!-- Should not show index page unless error -->
+	<div class="index-page" style="text-align:center">
+		<img src="assets/EPL_Logo.png" alt="EPL" height="80" width="500">
+		<h1 class="404error"> 404. Not Found </h1>
+		<p> Sorry, EPLScavengerHuntWebApp is down or not working. Please try again later. </p>
+	</div>
 </body>
 
 </html>
