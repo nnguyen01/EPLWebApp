@@ -4,12 +4,11 @@ import { RouterModule }   from '@angular/router';
 
 import { AlertModule } from 'ngx-bootstrap';
 
-import { AppComponent } from './app.component';
-import { LandingComponent } from '../landing/landing.component';
+import { AppComponent } from './dashboard.component';
+import { LandingComponent } from './injected_views/landing/landing.component';
 
 @NgModule({
   imports: [
-    AlertModule.forRoot(),
     BrowserModule,
 	RouterModule.forRoot([
       {
@@ -25,4 +24,5 @@ import { LandingComponent } from '../landing/landing.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
