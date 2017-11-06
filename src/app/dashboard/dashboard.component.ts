@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  template: '<a routerLink="/landing"></a><router-outlet></router-outlet>',
+  selector: 'dashboard', 
+  template: '<h1>{{title}}</h1><a routerLink="/dashboard"></a><router-outlet></router-outlet>',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class DashboardComponent {
+  title = 'Dashboard';
 }

@@ -1,19 +1,16 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule }   from '@angular/router';
 
-import { AlertModule } from 'ngx-bootstrap';
-import { AppComponent } from './login.component';
+import { LoginComponent } from './login.component';
 
 @NgModule({
   imports: [
-    AlertModule.forRoot(),
-    BrowserModule, 	
+    BrowserModule
   ],
   declarations: [
-    AppComponent
+    LoginComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LoginComponent]
 })
-export class AppModule { }
+export class LoginModule { }

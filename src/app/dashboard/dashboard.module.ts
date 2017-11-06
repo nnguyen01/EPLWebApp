@@ -1,28 +1,26 @@
 import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule }   from '@angular/router';
+import { RouterModule, Routes }   from '@angular/router';
 
-import { AlertModule } from 'ngx-bootstrap';
-
-import { AppComponent } from './dashboard.component';
+//import { DashboardComponent } from './dashboard.component';
 import { LandingComponent } from './injected_views/landing/landing.component';
+
+const dashboardRoutes: Routes = [
+  { path: 'landing',  component: LandingComponent }
+];
 
 @NgModule({
   imports: [
-    BrowserModule,
-	RouterModule.forRoot([
-      {
-        path: 'landing',
-        component: LandingComponent
-      }
-    ])
+		RouterModule.forChild(dashboardRoutes)
+  ],
+  exports: [
+    RouterModule
   ],
   declarations: [
-    AppComponent,
+    //DashboardComponent,
 	LandingComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  //bootstrap: [DashboardComponent]
 })
 
-export class AppModule { }
+export class DashboardModule { }
