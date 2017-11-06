@@ -1,9 +1,8 @@
 <html>
     <!-- Angular Controller -->
     <body ng-controller="mainController">
-		<a href="../dashboard/dashboard.component.html"><button>Go To Login</button></a>
-		<a routerLink="../dashboard/dashboard.component.html"><button class="btn btn-success pull-right" > Add Customer</button></a>
-		<button type="button" class="btn btn-primary-outline pull-right" (click)="btnClick();"><i class="fa fa-plus"></i> Add</button>    
-
+		<!-- Two ways to do the same thing. Go to new page on button click -->
+		<a href="/dashboard"><button>Go To Login</button></a>
+		<a routerLink="/dashboard"><button class="btn btn-success pull-right" > Add Customer</button></a>  
 	</body>
 </html>
