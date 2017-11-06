@@ -32,7 +32,7 @@ const routes: Routes = [
   exports: [ RouterModule ],
   declarations: [
     AppRouterComponent,
-	LoginComponent,
+	//LoginComponent,
   ],
   bootstrap: [AppRouterComponent]
 })
