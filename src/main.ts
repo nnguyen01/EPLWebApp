@@ -3,7 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 /* Set default entry point */
 import { AppModule } from './app/app-router.module';
-//import { AppModule } from './app/login/login.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {

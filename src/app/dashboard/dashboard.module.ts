@@ -1,26 +1,27 @@
-import { NgModule }       from '@angular/core';
+import { NgModule }  from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
-//import { DashboardComponent } from './dashboard.component';
+/* Components regarding the dashboard */
+import { DashboardComponent } from './dashboard.component';
 import { LandingComponent } from './injected_views/landing/landing.component';
 
+/* All routes regarding the dashboard */
 const dashboardRoutes: Routes = [
   { path: 'landing',  component: LandingComponent }
 ];
 
 @NgModule({
-  imports: [
-		RouterModule.forChild(dashboardRoutes)
-  ],
-  exports: [
-    RouterModule
-  ],
+  /* Use child routing */
+  imports: [ RouterModule.forChild(dashboardRoutes) ],
+  /* Make routes available to those who import this module */
+  exports: [ RouterModule ],
+  /* Make the components */
   declarations: [
-    //DashboardComponent,
+    DashboardComponent,
 	LandingComponent
   ],
   providers: [],
-  //bootstrap: [DashboardComponent]
+  bootstrap: [DashboardComponent]
 })
 
 export class DashboardModule { }
