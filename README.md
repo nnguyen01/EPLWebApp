@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 
-# RYAN's setup steps
+# Local hosting the webApp for development
 1. make sure npm is installed 
 WINDOWS: http://blog.teamtreehouse.com/install-node-js-npm-windows
 OSX: http://blog.teamtreehouse.com/install-node-js-npm-mac
