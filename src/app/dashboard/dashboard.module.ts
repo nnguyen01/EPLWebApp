@@ -19,9 +19,7 @@ const dashboardRoutes: Routes = [
   declarations: [
     DashboardComponent,
 	LandingComponent
-  ],
-  providers: [],
-  bootstrap: [DashboardComponent]
+  ]
 })
 
 export class DashboardModule { }

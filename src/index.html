@@ -1,26 +1,30 @@
-<!-- index.html -->
 <!DOCTYPE html>
+
+<!-- index.html -->
+<!-- 
+- Entry point to web application.
+- Sets up all defaults for all pages. 
+- Apache 2 will come back to this file if route is not found. 
+--> 
 <html lang="en">
+	<head>
+		<!-- Tab stuff -->
+		<title>EPLScavengerHunt</title>
+		<link rel="icon" type="image/x-icon" href="./assets/epl_favicon.ico">
 
-<head>
-	<!-- Tab stuff -->
-	<title>EPLScavengerHunt</title>
-	<link rel="icon" type="image/x-icon" href="./assets/epl_favicon.ico">
-
-	<!-- Set up html settings/options -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Set up html settings/options -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<!-- Default location -->
-	<base href="/">
+		<!-- Default location -->
+		<base href="/">
 	
-	<!-- Load Bootstrap -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-</head>
+		<!-- Load Bootstrap -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	</head>
 
-<body>
-	<p> index.html text. Shows unless overridden. </p>
-	<app-root>Loading</app-root>
-</body>	
-
+	<body>
+		<!-- Go to the first page (Will go to root module) -->
+		<app-root>Stuck at index.</app-root>
+	</body>	
 </html>

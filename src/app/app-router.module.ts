@@ -1,7 +1,16 @@
+/**
+Main router and root component
+- Declares root (itself/ this)
+- Routes the main application pages 
+   (inlcuding default/ no route and wildcard routes)
+- Keeps track of other routers
+- Creates nessecarily components
+**/
+
+/* Imports */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule }	from '@angular/core';
-import { RouterModule, Routes }   from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
 
 /* Components */
@@ -14,11 +23,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 /* All routes */
 const routes: Routes = [
-  //{ path: 'login',  component: LoginComponent },
+  { path: 'login',  component: LoginComponent },
   { path: 'dashboard',  component: DashboardComponent },
   
-  //{ path: '', redirectTo: '/login', pathMatch: 'full' }, //Default route
-  //{ path: '**', component: LoginComponent } //Wildcard route
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, //Default route
+  { path: '**', component: LoginComponent } //Wildcard route
 ];
 
 @NgModule({
@@ -30,11 +39,14 @@ const routes: Routes = [
 	RouterModule.forRoot(routes, { enableTracing: true }) //Adds the routes
   ],
   /* Make routes viewable to those who import this module */
-  //exports: [ RouterModule ],
+  exports: [ RouterModule ],
+  /* Make the components */
   declarations: [
     AppRouterComponent,
-	//LoginComponent,
+	LoginComponent,
   ],
+  /* Sets up bootstrap (Delcares root component */ 
   bootstrap: [AppRouterComponent]
 })
+
 export class AppRouterModule { }

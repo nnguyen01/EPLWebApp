@@ -1,19 +1,12 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Login</title>
-	</head>
-	
+
+<!-- app.component.html -->
+<!-- Template and empty view that will hold all other views -->
+<html>	
     <body>	
-		<!-- MAIN CONTENT AND INJECTED VIEWS -->
-		<nav>
-			<p> app component (main router) text. Shows unless overridden </p>
-			<!-- angular templating -->
-			<!-- this is where content will be injected -->
-			<a routerLink="/login" routerLinkActive="active" >Test</a>
-			<router-outlet></router-outlet>
-		</nav>
-		
+		<div>
+			<!-- Views will go in here -->
+			<router-outlet>App Router</router-outlet>
+		</div>
 	</body>
 </html>
