@@ -1,15 +1,17 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
+	<head>
     <!-- Angular Controller -->
-    <body ng-controller="mainController">
+    <body>
 		
 		<!-- MAIN CONTENT AND INJECTED VIEWS -->
-		<div id="main">
+		<div>
 			<p> app component (main router) text. Shows unless overridden </p>
 			<!-- angular templating -->
 			<!-- this is where content will be injected -->
-			<a routerLink="/dashboard"></a><router-outlet></router-outlet>
+			<a routerLink="/login" routerLinkActive="active" >Test</a>
+			<router-outlet></router-outlet>
 		</div>
 		
 	</body>
