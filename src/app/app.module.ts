@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'status', component: StatusComponent }
     ])
   ],
   providers: [AuthService],
