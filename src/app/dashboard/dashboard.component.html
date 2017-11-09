@@ -1,12 +1,16 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
-    <!-- Angular Controller -->
-    <body ng-controller="mainController">
 
-		<!-- Dashboard -->
+<!-- dashboard.componenet.html -->
+<!--   //template: '<h1>Angular Router</h1><nav><a routerLink="/login" routerLinkActive="active">Login</a></nav><router-outlet></router-outlet>'
+  -->
+<html>
+    <body>
+	
+		<!-- Navigation bar on top -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="container-fluid">
+		  
+			<!-- Header -->
 			<div class="navbar-header">
 			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
@@ -14,14 +18,16 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			  </button>
-			  <a class="navbar-brand" href="#">Project name</a>
+			  
+			  <!-- Title -->
+			  <img src="assets/EPL_Logo.png" alt="EPL" height="40" width="250">
+			  <!-- <a class="navbar-brand" routerLink="/dashboard">EPL ScavHunt Admin</a> -->
 			</div>
+			
+			
 			<div id="navbar" class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
+				<a routerLink="/dashboard">Dashboard</a>
 			  </ul>
 			  <form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
@@ -30,57 +36,54 @@
 		  </div>
 		</nav>
 
+		<!-- Side navigation bar -->
 		<div class="container-fluid">
 		  <div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 			  <ul class="nav nav-sidebar">
-				<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Reports</a></li>
-				<li><a href="#">Analytics</a></li>
-				<li><a href="#">Export</a></li>
+				<li class="active"><a routerLink="/dashboard">Dashboard<span class="sr-only">(current)</span></a></li>
+				<li><a routerLink="/dashboard/landing" routerLinkActive="active">Questions</a></li>
+				<li><a routerLink="/dashboard/analytics">Analytics</a></li>
 			  </ul>
 			  <ul class="nav nav-sidebar">
-				<li><a href="">Nav item</a></li>
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
-				<li><a href="">More navigation</a></li>
+				<li><a routerLink="/dashboard">Notifications</a></li>
+				<li><a routerLink="/dashboard">Settings</a></li>
 			  </ul>
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			  <h1 class="page-header">Dashboard</h1>
+		</div>
+			
+		<!-- Dashboard interior -->
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<router-outlet></router-outlet>
+			<h1 class="page-header">Hello!!!!!</h1>
 
-			  <div class="row placeholders">
+			<div class="row placeholders">
 				<div class="col-xs-6 col-sm-3 placeholder">
-				  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-				  <h4>Label</h4>
-				  <span class="text-muted">Something else</span>
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+					<h4>Label</h4>
+					<span class="text-muted">Something else</span>
 				</div>
+				
 				<div class="col-xs-6 col-sm-3 placeholder">
-				  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-				  <h4>Label</h4>
-				  <span class="text-muted">Something else</span>
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+					<h4>Label</h4>
+					<span class="text-muted">Something else</span>
 				</div>
+				
 				<div class="col-xs-6 col-sm-3 placeholder">
-				  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-				  <h4>Label</h4>
-				  <span class="text-muted">Something else</span>
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+					<h4>Label</h4>
+					<span class="text-muted">Something else</span>
 				</div>
+				
 				<div class="col-xs-6 col-sm-3 placeholder">
-				  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-				  <h4>Label</h4>
-				  <span class="text-muted">Something else</span>
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+					<h4>Label</h4>
+					<span class="text-muted">Something else</span>
 				</div>
 			  </div>
 			</div>
-		  </div>
-		</div>
-
-		<!-- MAIN CONTENT AND INJECTED VIEWS -->
-		<div id="main">
-			<!-- angular templating -->
-			<!-- this is where content will be injected -->
-			<a routerLink="/landing"></a><router-outlet></router-outlet>
-		</div>
+		 </div>
+		 
 	</body>
 </html>
