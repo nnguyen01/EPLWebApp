@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
 import { StatusComponent } from './components/status/status.component';
+import { EnsureAuthenticated } from './services/ensure-authenticated.service';
+import { LoginRedirect } from './services/login-redirect.service';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,29 @@ import { StatusComponent } from './components/status/status.component';
     HttpModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'status', component: StatusComponent }
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [LoginRedirect]
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [LoginRedirect]
+      },
+      {
+        path: 'status',
+        component: StatusComponent,
+        canActivate:
+        [EnsureAuthenticated]
+      }
     ])
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    EnsureAuthenticated,
+    LoginRedirect
+  ],
   bootstrap: [AppComponent]
 })
 
