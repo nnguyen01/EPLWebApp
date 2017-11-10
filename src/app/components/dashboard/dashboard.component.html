@@ -1,90 +1,101 @@
 <!DOCTYPE html>
 
-<!-- dashboard.componenet.html -->
+<!-- dashboard.component.html -->
 <!--   //template: '<h1>Angular Router</h1><nav><a routerLink="/login" routerLinkActive="active">Login</a></nav><router-outlet></router-outlet>'
-  -->
-<html>
-    <body>
-	
-		<!-- Navigation bar on top -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="container-fluid">
-		  
-			<!-- Header -->
-			<div class="navbar-header">
-				<button (click)="onLogout()">Logout</button>
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	-->
+<!-- Navigation bar on top -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+
+		<!-- Header -->
+		<div class="navbar-header">
+			<button (click)="onLogout()">Logout</button>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+			 aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			  </button>
-			  
-			  <!-- Title -->
-			  <img src="assets/EPL_Logo.png" alt="EPL" height="40" width="250">
-			  <!-- <a class="navbar-brand" routerLink="/dashboard">EPL ScavHunt Admin</a> -->
-			</div>
-			
-			
-			<div id="navbar" class="navbar-collapse collapse">
-			  <ul class="nav navbar-nav navbar-right">
-				<a routerLink="/dashboard">Dashboard</a>
-			  </ul>
-			  <form class="navbar-form navbar-right">
-				<input type="text" class="form-control" placeholder="Search...">
-			  </form>
-			</div>
-		  </div>
-		</nav>
+			</button>
 
-		<!-- Side navigation bar -->
-		<div class="container-fluid">
-		  <div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-			  <ul class="nav nav-sidebar">
-				<li class="active"><a routerLink="/dashboard">Dashboard<span class="sr-only">(current)</span></a></li>
-				<li><a routerLink="/dashboard/landing" routerLinkActive="active">Questions</a></li>
-				<li><a routerLink="/dashboard/analytics">Analytics</a></li>
-			  </ul>
-			  <ul class="nav nav-sidebar">
-				<li><a routerLink="/dashboard">Notifications</a></li>
-				<li><a routerLink="/dashboard">Settings</a></li>
-			  </ul>
+			<!-- Title -->
+			<img src="assets/EPL_Logo.png" alt="EPL" height="40" width="250">
+			<!-- <a class="navbar-brand" routerLink="/dashboard">EPL ScavHunt Admin</a> -->
+		</div>
+
+
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<a routerLink="/dashboard">Dashboard</a>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="Search...">
+			</form>
+		</div>
+	</div>
+</nav>
+
+<!-- Side navigation bar -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active">
+					<a routerLink="/dashboard">Dashboard
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/dashboard/landing" routerLinkActive="active">Questions</a>
+				</li>
+				<li>
+					<a routerLink="/dashboard/analytics">Analytics</a>
+				</li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li>
+					<a routerLink="/dashboard">Notifications</a>
+				</li>
+				<li>
+					<a routerLink="/dashboard">Settings</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Dashboard interior -->
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<router-outlet></router-outlet>
+		<h1 class="page-header">Hello!!!!!</h1>
+
+		<div class="row placeholders">
+			<div class="col-xs-6 col-sm-3 placeholder">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive"
+				 alt="Generic placeholder thumbnail">
+				<h4>Label</h4>
+				<span class="text-muted">Something else</span>
+			</div>
+
+			<div class="col-xs-6 col-sm-3 placeholder">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive"
+				 alt="Generic placeholder thumbnail">
+				<h4>Label</h4>
+				<span class="text-muted">Something else</span>
+			</div>
+
+			<div class="col-xs-6 col-sm-3 placeholder">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive"
+				 alt="Generic placeholder thumbnail">
+				<h4>Label</h4>
+				<span class="text-muted">Something else</span>
+			</div>
+
+			<div class="col-xs-6 col-sm-3 placeholder">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive"
+				 alt="Generic placeholder thumbnail">
+				<h4>Label</h4>
+				<span class="text-muted">Something else</span>
 			</div>
 		</div>
-			
-		<!-- Dashboard interior -->
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<router-outlet></router-outlet>
-			<h1 class="page-header">Hello!!!!!</h1>
-
-			<div class="row placeholders">
-				<div class="col-xs-6 col-sm-3 placeholder">
-					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-					<h4>Label</h4>
-					<span class="text-muted">Something else</span>
-				</div>
-				
-				<div class="col-xs-6 col-sm-3 placeholder">
-					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-					<h4>Label</h4>
-					<span class="text-muted">Something else</span>
-				</div>
-				
-				<div class="col-xs-6 col-sm-3 placeholder">
-					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-					<h4>Label</h4>
-					<span class="text-muted">Something else</span>
-				</div>
-				
-				<div class="col-xs-6 col-sm-3 placeholder">
-					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-					<h4>Label</h4>
-					<span class="text-muted">Something else</span>
-				</div>
-			  </div>
-			</div>
-		 </div>
-		 
-	</body>
-</html>
+	</div>
+</div>
