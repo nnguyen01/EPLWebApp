@@ -16,10 +16,10 @@ import { AlertModule } from 'ngx-bootstrap';
 /* Components */
 import { AppRouterComponent } from './app-router.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 /* Other routers (Child routers) */
-import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardModule } from './components/dashboard/dashboard.module';
 
 /* All routes */
 const routes: Routes = [
