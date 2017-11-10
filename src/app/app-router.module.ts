@@ -17,15 +17,18 @@ import { AlertModule } from 'ngx-bootstrap';
 import { AppRouterComponent } from './app-router.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 /* Other routers (Child routers) */
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AddQuestionModule } from './add-question/add-question.module';
 
 /* All routes */
 const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'dashboard',  component: DashboardComponent },
-  
+
+  { path: 'add-question', component: AddQuestionComponent }, // addQuestion route
   { path: '', redirectTo: '/login', pathMatch: 'full' }, //Default route
   { path: '**', component: LoginComponent } //Wildcard route
 ];
@@ -35,6 +38,7 @@ const routes: Routes = [
   imports: [
     AlertModule.forRoot(),
     BrowserModule,
+  AddQuestionModule,
 	DashboardModule,
 	RouterModule.forRoot(routes, { enableTracing: true }) //Adds the routes
   ],
