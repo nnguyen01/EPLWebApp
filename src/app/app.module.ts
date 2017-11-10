@@ -17,7 +17,7 @@ import { LoginRedirect } from './services/login-redirect.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    StatusComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
