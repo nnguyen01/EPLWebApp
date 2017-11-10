@@ -11,8 +11,28 @@ import { Question } from './question';
 export class AddQuestionComponent {
   title = 'AddQuestion';
   question: Question;
+  submitted = false;
+
+  branches = ['Clareview', 'Strathcona'];
+  qTypes = ['picInput', 'writInput', 'multChoice'];
+  zones = ['Nature', 'Nonfiction', 'Fiction', 'Kids'];
+
+  onSubmit() {
+    this.submitted = true;
+  }
 
   ngOnInit() {
     this.question = new Question();
   }
+
+  playAudio() {
+    let audio = new Audio();
+    audio.src = this.question.sLink;
+    audio.load();
+    audio.play();
+    }
+
+    errorHandler(event) {
+      
+    }
 }
