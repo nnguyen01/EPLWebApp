@@ -20,6 +20,7 @@ import { AppRouterComponent } from './app-router.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 /* Services */
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
@@ -28,6 +29,7 @@ import { AuthService } from './services/auth.service';
 
 /* Other routers (Child routers) */
 import { DashboardModule } from './components/dashboard/dashboard.module';
+import { AddQuestionModule } from './add-question/add-question.module';
 
 /* All routes */
 const routes: Routes = [
@@ -50,12 +52,16 @@ const routes: Routes = [
     canActivate: [LoginRedirect]
   },
 
+  { path: '/dashboard/add-question', 
+    component: AddQuestionComponent 
+  }, // addQuestion route
+
   { 
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  }
-];
+  },
+]
 
 @NgModule({
   /* Module imports here */
@@ -65,6 +71,7 @@ const routes: Routes = [
     DashboardModule,
     HttpModule,
     FormsModule,
+    AddQuestionModule,
 	RouterModule.forRoot(routes, { enableTracing: true }) //Adds the routes
   ],
   /* Make routes viewable to those who import this module */
