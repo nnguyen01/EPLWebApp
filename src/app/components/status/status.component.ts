@@ -20,18 +20,19 @@ export class StatusComponent implements OnInit {
         }
       })
       .catch((err) => {
+        alert("Please Login Again")
+        localStorage.removeItem('token')
+        this.router.navigateByUrl('/login');
         console.log(err);
       });
     }
   }
   onLogout(): void {
     const token = localStorage.getItem('token');
-    console.log(token)
     if (token) {
       this.auth.logout(token)
       .then((user) => {
-        console.log(user.json());
-        if (user.json().status === 'sucess') {
+        if (user.json().status === 'success') {
           localStorage.removeItem('token');
           this.router.navigateByUrl('/login');
         }

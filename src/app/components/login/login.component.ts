@@ -10,7 +10,9 @@ import { User } from '../../models/user';
 })
 export class LoginComponent {
   user: User = new User();
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(private router: Router, private auth: AuthService) {
+    console.log("1111")
+  }
   onLogin(): void {
     this.auth.login(this.user)
     .then((user) => {
