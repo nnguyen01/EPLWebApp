@@ -20,7 +20,6 @@ import { AppRouterComponent } from './app-router.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
-import { StatusComponent } from './components/status/status.component';
 
 /* Services */
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
@@ -30,11 +29,14 @@ import { AuthService } from './services/auth.service';
 /* Other routers (Child routers) */
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
-
-
 /* All routes */
 const routes: Routes = [
-  { path: 'dashboard',  component: DashboardComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate:
+    [EnsureAuthenticated]
+  },
 
   {
     path: 'login',
@@ -46,17 +48,6 @@ const routes: Routes = [
     component: RegisterComponent,
     canActivate: [LoginRedirect]
   },
-  {
-    path: 'status',
-    component: StatusComponent,
-    canActivate:
-    [EnsureAuthenticated]
-  },
-  
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, //Default route
-  { path: '**', component: LoginComponent } //Wildcard route
-
-
 ];
 
 @NgModule({
@@ -76,7 +67,6 @@ const routes: Routes = [
     AppRouterComponent,
     LoginComponent,
     RegisterComponent,
-    StatusComponent
   ],
   providers: [
     AuthService,
