@@ -16,7 +16,7 @@ import { LandingComponent } from './injected_views/landing/landing.component';
 /* All routes regarding the dashboard */
 const dashboardRoutes: Routes = [
   //{ path: 'dashboard/landing',  component: LandingComponent },
-  { path: '',  component: DashboardComponent,
+  { path: 'dashboard',  component: DashboardComponent,
 	children:[ 
 		{ path: 'landing', loadChildren: './injected_views/landing/landing.component' },]
   },

@@ -32,6 +32,12 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 /* All routes */
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginRedirect]
+  },
+
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate:
@@ -39,15 +45,16 @@ const routes: Routes = [
   },
 
   {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [LoginRedirect]
-  },
-  {
     path: 'register',
     component: RegisterComponent,
     canActivate: [LoginRedirect]
   },
+
+  { 
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

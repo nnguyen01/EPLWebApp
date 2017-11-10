@@ -13,6 +13,7 @@ export class LoginComponent {
   constructor(private router: Router, private auth: AuthService) {
   }
   onLogin(): void {
+    console.log("HELLO")
     this.auth.login(this.user)
     .then((user) => {
       localStorage.setItem('token', user.json().auth_token);
