@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    selector: 'app-zones',
+    templateUrl: './zones.component.html',
+    styleUrls: ['./zones.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class ZonesComponent implements OnInit {
+
     constructor(private router: Router, private auth: AuthService) { }
     ngOnInit(): void {
         const token = localStorage.getItem('token');
@@ -38,4 +39,5 @@ export class DashboardComponent implements OnInit {
                 })
         }
     }
+
 }

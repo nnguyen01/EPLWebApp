@@ -14,6 +14,7 @@ export class LoginComponent {
   user: User = new User();
   constructor(private router: Router, private auth: AuthService) {}
   onLogin(Login: NgForm): void {
+    console.log("herenow23423423423423");
     if (Login.valid) {
       this.auth.login(this.user)
       .then((user) => {
