@@ -5,18 +5,24 @@ import { FormsModule } from '@angular/forms';
 import { ZonesComponent } from './zones/zones.component';
 import { DashboardComponent } from './dashboard.component';
 
+import { EnsureAuthenticated } from './../../services/ensure-authenticated.service';
+
+import { DashboardRoutingModule } from './dashboard-routing.module';
+
 @NgModule({
     declarations: [
         DashboardComponent,
-        ZonesComponent,
+        ZonesComponent
     ],
 
     imports: [
         CommonModule,
         FormsModule,
+        DashboardRoutingModule
     ],
     providers: [
+        EnsureAuthenticated
     ]
 })
 
-export class DashboardModule {}
+export class DashboardModule { }

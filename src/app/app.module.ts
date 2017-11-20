@@ -6,12 +6,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardModule } from './components/dashboard/dashboard.module';
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ZonesComponent } from './components/dashboard/zones/zones.component';
-import { EnsureAuthenticated } from './services/ensure-authenticated.service';
+//import { ZonesComponent } from './components/dashboard/zones/zones.component';
+//import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
 import { AuthService } from './services/auth.service';
 
@@ -20,19 +21,20 @@ import { AuthService } from './services/auth.service';
         AppComponent,
         LoginComponent,
         RegisterComponent,
-        DashboardComponent,
-        ZonesComponent,
+        //DashboardComponent,
+        //ZonesComponent,
     ],
 
     imports: [
         BrowserModule,
         HttpModule,
         FormsModule,
+        DashboardModule,
         AppRoutingModule
     ],
     providers: [
         AuthService,
-        EnsureAuthenticated,
+        //EnsureAuthenticated,
         LoginRedirect
     ],
     bootstrap: [AppComponent]
