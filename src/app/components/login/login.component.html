@@ -2,7 +2,8 @@
   <div class="col-md-4">
     <h1>Login</h1>
     <hr>
-    <div *ngIf="!credentials" class="{error}">The username and password combination do not match our records.</div>
+    <!--
+    <div *ngIf="!credentials" class="{error}">The username and password combination do not match our records.</div> <-->
     <br>
     <form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
       <div class="form-group">

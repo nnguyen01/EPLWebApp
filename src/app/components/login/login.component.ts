@@ -10,18 +10,20 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  public credentials: Boolean = true;
+  //public credentials: Boolean = true;
   user: User = new User();
   constructor(private router: Router, private auth: AuthService) {}
   onLogin(Login: NgForm): void {
     if (Login.valid) {
       this.auth.login(this.user)
       .then((user) => {
+        console.log(user.json());
         localStorage.setItem('token', user.json().auth_token);
-        //this.router.navigateByUrl('/status');
+        this.router.navigateByUrl('/dashboard');
       })
       .catch((err) => {
-        this.credentials = false;
+        //this.credentials = false;
+        alert("The username and password combination do not match our records.")
         console.log(err);
       });
     }
