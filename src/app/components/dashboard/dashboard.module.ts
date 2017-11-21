@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { ZonesComponent } from './zones/zones.component';
 import { DashboardComponent } from './dashboard.component';
 
 import { EnsureAuthenticated } from './../../services/ensure-authenticated.service';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { DashboardQuestionsComponent } from './dashboard-questions/dashboard-questions.component';
+import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-analytics.component';
 
 @NgModule({
     declarations: [
         DashboardComponent,
-        ZonesComponent
+        DashboardHomeComponent,
+        DashboardQuestionsComponent,
+        DashboardAnalyticsComponent
     ],
 
     imports: [
