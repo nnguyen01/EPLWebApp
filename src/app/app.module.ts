@@ -11,8 +11,6 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-//import { ZonesComponent } from './components/dashboard/zones/zones.component';
-//import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
 import { AuthService } from './services/auth.service';
 
@@ -21,8 +19,6 @@ import { AuthService } from './services/auth.service';
         AppComponent,
         LoginComponent,
         RegisterComponent,
-        //DashboardComponent,
-        //ZonesComponent,
     ],
 
     imports: [
@@ -34,7 +30,6 @@ import { AuthService } from './services/auth.service';
     ],
     providers: [
         AuthService,
-        //EnsureAuthenticated,
         LoginRedirect
     ],
     bootstrap: [AppComponent]
