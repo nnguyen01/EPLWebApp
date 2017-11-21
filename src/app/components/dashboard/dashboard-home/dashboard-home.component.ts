@@ -13,8 +13,8 @@ export class DashboardHomeComponent implements OnInit {
     private branch: Branch;
     constructor() { }
     ngOnInit(): void {
-        this.branch = new Branch("Clareview", 
-            "TestID12345678", 
+        this.branch = new Branch("Clareview",
+            "TestID12345678",
             "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Melk_-_Abbey_-_Library.jpg/1200px-Melk_-_Abbey_-_Library.jpg")
     }
 }

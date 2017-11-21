@@ -1,27 +1,35 @@
 export class Branch {
-    constructor(name?: string, beaconID?: string, iLink?: string) { }
+    private _name: string;
+    private _beaconID: string;
+    private _iLink: string;
 
-    get name(): string {
-        return this.name;
+    constructor(name: string, beaconID?: string, iLink?: string) {
+        this._name = name;
+        this._beaconID = beaconID;
+        this._iLink = iLink;
     }
 
-    set name(name: string) {
-        this.name = name;
+    get name(): string {
+        return this._name;
+    }
+
+    set name(newName: string) {
+        this._name = newName;
     }
 
     get beaconID(): string {
-        return this.beaconID;
+        return this._beaconID;
     }
 
-    set beaconID(beaconID: string) {
-        this.beaconID = beaconID;
+    set beaconID(newBeaconID: string) {
+        this._beaconID = newBeaconID;
     }
 
     get iLink(): string {
-        return this.iLink;
+        return this._iLink;
     }
 
-    set iLink(iLink: string) {
-        this.iLink = iLink;
+    set iLink(newiLink: string) {
+        this._iLink = newiLink;
     }
 }
