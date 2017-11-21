@@ -6,7 +6,6 @@ import { AuthService } from './auth.service';
 export class EnsureAuthenticated implements CanActivate {
     constructor(private auth: AuthService, private router: Router) { }
     canActivate(): boolean {
-        console.log("herenow123456876543");
         if (localStorage.getItem('token')) {
             return true;
         }

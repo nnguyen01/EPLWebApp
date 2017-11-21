@@ -13,18 +13,20 @@ const dashboardRoutes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [EnsureAuthenticated],
-        children: [
+        children: [ // TODO: Find a way to only fire canActivate once
             {
                 path: '',
                 component: DashboardHomeComponent
             },
             {
                 path:'questions',
-                component: DashboardQuestionsComponent
+                component: DashboardQuestionsComponent,
+                canActivate: [EnsureAuthenticated]
             },
             {
                 path:'analytics',
-                component: DashboardAnalyticsComponent
+                component: DashboardAnalyticsComponent,
+                canActivate: [EnsureAuthenticated]
             }
         ]
     },
