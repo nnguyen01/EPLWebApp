@@ -14,7 +14,8 @@ export class DashboardComponent implements OnInit {
         if (token) {
             this.auth.ensureAuthenticated(token)
                 .then((user) => {
-                    if (user.json().status === 'success') {
+                    console.log(user);
+                    if (user.status === 'success') {
                         // Maybe add something here?
                     }
                 }
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
         if (token) {
             this.auth.logout(token)
                 .then((user) => { // TODO: Catch error and do something (not sure what)
-                    if (user.json().status === 'success') {
+                    if (user.status === 'success') {
                         localStorage.removeItem('token');
                         this.router.navigateByUrl('/login');
                     }

@@ -16,7 +16,7 @@ import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-ana
         DashboardComponent,
         DashboardHomeComponent,
         DashboardQuestionsComponent,
-        DashboardAnalyticsComponent
+        DashboardAnalyticsComponent,
     ],
 
     imports: [

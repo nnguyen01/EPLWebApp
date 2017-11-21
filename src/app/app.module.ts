@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -13,7 +13,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginRedirect } from './services/login-redirect.service';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth.service'
+
+import { MatGridListModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -24,9 +26,10 @@ import { AuthService } from './services/auth.service';
 
     imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
         BrowserAnimationsModule,
+        MatGridListModule,
         DashboardModule,
         AppRoutingModule
     ],
