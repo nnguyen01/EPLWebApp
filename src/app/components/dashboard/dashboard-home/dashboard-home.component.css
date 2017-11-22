@@ -6,7 +6,8 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
  * Base structure
  */
   .example-card {
-    width: 400px;
+    width: 300px;
+    height: 300px;
   }
   
   .example-header-image {

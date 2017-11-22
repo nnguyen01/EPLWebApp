@@ -4,7 +4,7 @@ export interface LibraryBranch {
 }
 /*
 export class LibraryBranch {
-    constructor(branch?: string, beaconID?: string, iLink?: string) { }
+    //constructor(branch?: string, beaconID?: string, iLink?: string) { }
 
     private _branch: string;
     private _beaconID: string;

@@ -2,59 +2,19 @@
 <-->
 
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li class="active">
-                            <a>Dashboard</a>
-                        </li>
-                        <li>
-                            <a routerLink="/dashboard/questions">Questions</a>
-                        </li>
-                        <li>
-                            <a routerLink="/dashboard/analytics">Analytics</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-->
-                <div class="main">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="text-center col-xs-4">
-                                <div class="card">
-                                    <img src={{branch.iLink}} at="Library photo unavailable" style="width:270px; height:220px;">
-                                    <h3>
-                                        {{branch.name}}
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <-->
-            </div>
-            <div class="main">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <mat-card-title>{{library.name}}</mat-card-title>
-                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src={{library.iLink}} alt="Branch photo">
-                    <!-->
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <-->
-                        <mat-card-content>
-                            <p>
-                                Comment section placeholder
-                            </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
-                        </mat-card-actions>
-                </mat-card>
-            </div>
+        <div class="main">
+            <mat-grid-list cols="3" rowHeight="250px" >
+                <mat-grid-tile *ngFor="let library of libraries">
+                    <img src={{library.iLink}} alt="placeholder">
+                    <mat-grid-tile-footer>
+                        <h3 mat-line>{{library.branch}}</h3>
+                        <span mat-line>Branch</span>
+                        <button mat-icon-button>
+                            <mat-icon svgIcon="settings">settings</mat-icon>
+                        </button>
+                    </mat-grid-tile-footer>
+                </mat-grid-tile>
+            </mat-grid-list>
         </div>
 
         <!-- Bootstrap core JavaScript
