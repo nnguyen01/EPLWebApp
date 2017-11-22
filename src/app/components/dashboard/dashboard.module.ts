@@ -11,6 +11,8 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { DashboardQuestionsComponent } from './dashboard-questions/dashboard-questions.component';
 import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-analytics.component';
 
+import { CustomMaterialsModule } from '../../custom-materials.module';
+
 @NgModule({
     declarations: [
         DashboardComponent,
@@ -22,8 +24,10 @@ import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-ana
     imports: [
         CommonModule,
         FormsModule,
+        CustomMaterialsModule,
         DashboardRoutingModule
     ],
+
     providers: [
         EnsureAuthenticated
     ]

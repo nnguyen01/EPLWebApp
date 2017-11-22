@@ -3,7 +3,7 @@ export class Branch {
     private _beaconID: string;
     private _iLink: string;
 
-    constructor(name: string, beaconID?: string, iLink?: string) {
+    constructor(name?: string, beaconID?: string, iLink?: string) {
         this._name = name;
         this._beaconID = beaconID;
         this._iLink = iLink;

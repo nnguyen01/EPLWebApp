@@ -1,11 +1,9 @@
 /**
 Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewiener/pen/GqgBqN
 **/
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /*
  * Base structure
  */
-
  .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

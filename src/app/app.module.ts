@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { CustomMaterialsModule } from './custom-materials.module'
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
@@ -14,8 +15,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginRedirect } from './services/login-redirect.service';
 import { AuthService } from './services/auth.service'
-
-import { MatGridListModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -29,7 +28,7 @@ import { MatGridListModule } from '@angular/material';
         HttpClientModule,
         FormsModule,
         BrowserAnimationsModule,
-        MatGridListModule,
+        CustomMaterialsModule,
         DashboardModule,
         AppRoutingModule
     ],
