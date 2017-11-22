@@ -5,8 +5,13 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
 /*
  * Base structure
  */
- mat-grid-tile {
-    background: lightblue;
+  .example-card {
+    width: 400px;
+  }
+  
+  .example-header-image {
+    /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
   }
 
  .unselectable {
@@ -20,7 +25,7 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
   
   /* Move down content because we have a fixed navbar that is 50px tall */
   body {
-      padding-top: 50px;
+      padding-top: 20px;
     }
     
     

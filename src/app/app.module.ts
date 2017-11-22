@@ -14,7 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginRedirect } from './services/login-redirect.service';
+
 import { AuthService } from './services/auth.service'
+import { GetInfoService } from './services/get-info.service'
 
 @NgModule({
     declarations: [
@@ -34,6 +36,7 @@ import { AuthService } from './services/auth.service'
     ],
     providers: [
         AuthService,
+        GetInfoService,
         LoginRedirect
     ],
     bootstrap: [AppComponent]

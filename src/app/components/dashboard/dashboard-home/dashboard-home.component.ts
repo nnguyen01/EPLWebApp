@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { GetInfoService } from '../../../services/get-info.service';
 
-import { Branch } from '../../../models/branch';
+import { LibraryBranch } from '../../../models/library-branch';
 
 @Component({
     selector: 'app-dashboard-home',
@@ -10,11 +11,21 @@ import { Branch } from '../../../models/branch';
     styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
-    public branch: Branch;
-    constructor() { }
+    library: LibraryBranch = { branch: "", iLink: "" }
+    constructor(private getInfo: GetInfoService) { }
     ngOnInit(): void {
-        this.branch = new Branch("Clareview",
-            "TestID12345678",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Melk_-_Abbey_-_Library.jpg/1200px-Melk_-_Abbey_-_Library.jpg")
+        this.getInfo.getBranch()
+            .then((library) => {
+                console.log(library)
+                if (library.status === 'success') {
+                    this.library = library.data[0];
+                    console.log(this.library.branch);
+                }
+            }
+        )
+            .catch((err) => {
+                console.log(err);
+            }
+        )
     }
 }

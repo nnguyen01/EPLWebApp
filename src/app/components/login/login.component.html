@@ -1,28 +1,28 @@
 <div class="row">
-  <div class="col-md-4">
-    <h1>Login</h1>
-    <hr>
-    <!--
+    <div class="col-md-4">
+        <h1>Login</h1>
+        <hr>
+        <!--
     <div *ngIf="!credentials" class="{error}">The username and password combination do not match our records.</div> <-->
-    <br>
-    <form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="enter email" required [(ngModel)]="user.email" name="email"
-          #email="ngModel">
-        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-          Email is required
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="enter password" required [(ngModel)]="user.password"
-          name="password" #password="ngModel">
-        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-          Password is required
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
+        <br>
+        <form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="enter email" required [(ngModel)]="user.email" name="email"
+                    #email="ngModel">
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    Email is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="enter password" required [(ngModel)]="user.password"
+                    name="password" #password="ngModel">
+                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                    Password is required
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
 </div>

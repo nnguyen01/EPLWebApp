@@ -11,7 +11,6 @@ export class AuthService {
     login(user: User): Promise<any> {
         let url: string = `${this.BASE_URL}/login`;
         return this.http.post(url, user, { headers: this.headers }).toPromise();
-        //return this.http.post(url, user, { headers: new HttpHeaders().set('Content-Type': 'application/json')).toPromise();
     }
     register(user: User): Promise<any> {
         let url: string = `${this.BASE_URL}/register`;
