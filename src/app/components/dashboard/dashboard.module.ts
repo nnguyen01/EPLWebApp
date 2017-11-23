@@ -12,6 +12,8 @@ import { DashboardQuestionsComponent } from './dashboard-questions/dashboard-que
 import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-analytics.component';
 
 import { CustomMaterialsModule } from '../../custom-materials.module';
+import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
+import { DashboardInfoService } from '../../services/dashboard-info.service';
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import { CustomMaterialsModule } from '../../custom-materials.module';
         DashboardHomeComponent,
         DashboardQuestionsComponent,
         DashboardAnalyticsComponent,
+        DashboardZonesComponent,
     ],
 
     imports: [
@@ -29,7 +32,8 @@ import { CustomMaterialsModule } from '../../custom-materials.module';
     ],
 
     providers: [
-        EnsureAuthenticated
+        EnsureAuthenticated,
+        DashboardInfoService
     ]
 })
 

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { GetInfoService } from '../../../services/get-info.service';
+import { DashboardInfoService } from '../../../services/dashboard-info.service';
 
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 import { LibraryBranch } from '../../../models/library-branch';
 
@@ -14,9 +15,12 @@ import { LibraryBranch } from '../../../models/library-branch';
     styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
-    library: LibraryBranch = { branch: "", iLink: "" }
-    libraries : LibraryBranch[] = [];
-    constructor(private getInfo: GetInfoService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
+    libraries: LibraryBranch[] = [];
+    constructor(
+        private getInfo: GetInfoService,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer,
+        private dashService: DashboardInfoService) {
         iconRegistry.addSvgIcon(
             'settings',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/settings.svg'));
@@ -27,17 +31,15 @@ export class DashboardHomeComponent implements OnInit {
                 console.log(library)
                 if (library.status === 'success') {
                     this.libraries = library.data;
-                    this.library = library.data[0];
-                    console.log(this.library.branch);
-                    console.log(this.libraries);
-                    //console.log(this.library.branch);
-                    //console.log(this.library.iLink);
                 }
             }
-        )
+            )
             .catch((err) => {
                 console.log(err);
             }
-        )
+            )
+    }
+    onClick(name: string): void {
+        this.dashService.getBranch(name);
     }
 }

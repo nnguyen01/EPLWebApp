@@ -5,62 +5,74 @@
         <!-->
         <mat-toolbar color="primary">
             <mat-toolbar-row>
-                <span>Custom Toolbar</span>
+                <span>EPLScavengerHunt</span>
+                <span class="example-fill-remaining-space"></span>
+                <span>
+                    <button mat-button-raised color="warn" (click)="onLogout()">Logout</button>
+                </span>
             </mat-toolbar-row>
         </mat-toolbar>
         <-->
+        <!-->
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item routerLink="/dashboard"> Dashboard </button>
+            <button mat-menu-item routerLink="/dashboard/questions"> Questions </button>
+            <button mat-menu-item routerLink="/dashboard/analytics"> Analytics </button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>Menu</mat-icon>
+        </button>
+        <-->
         <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand unselectable">EPLScavengerHunt</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a class="unselectable" (click)="onLogout()">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </nav>  
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                        aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand unselectable">EPLScavengerHunt</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a class="unselectable" (click)="onLogout()">Logout</a>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 sidebar">
+                        <ul class="nav nav-sidebar">
+                            <li routerLinkActive="active">
+                                <a routerLink="/dashboard/home">Dashboard</a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/dashboard/questions">Questions</a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/dashboard/analytics">Analytics</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <router-outlet></router-outlet>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                            <a routerLink="/dashboard" >Dashboard</a>
-                        </li>
-                        <li routerLinkActive="active">
-                            <a routerLink="/dashboard/questions">Questions</a>
-                        </li>
-                        <li routerLinkActive="active">
-                            <a routerLink="/dashboard/analytics">Analytics</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <router-outlet></router-outlet>
-
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="../../assets/js/vendor/holder.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+            <!-- Bootstrap core JavaScript -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+            <script src="../../dist/js/bootstrap.min.js"></script>
+            <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+            <script src="../../assets/js/vendor/holder.min.js"></script>
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
     </body>

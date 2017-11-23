@@ -5,6 +5,26 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
  * Base structure
  */
 
+ .example-container {
+    width: 20%;
+    height: 500px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    width:20%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+ .example-fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
  mat-grid-tile {
     background: darkblue;
   }
@@ -18,9 +38,10 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
   user-select: none;
 }
 
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 0px;
+ 
+  /* Move down content because we have a fixed navbar that is 50px tall */
+  body {
+    padding-top: 50px;
   }
   
   
@@ -30,7 +51,7 @@ body {
   
   .sub-header {
     padding-bottom: 10px;
-    border-bottom: px solid #eee;
+    border-bottom: 1px solid #eee;
   }
   
   /*
@@ -88,7 +109,7 @@ body {
    */
   
   .main {
-    padding: 0px;
+    padding: 20px;
   }
   @media (min-width: 768px) {
     .main {

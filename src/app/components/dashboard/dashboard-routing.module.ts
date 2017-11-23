@@ -7,16 +7,30 @@ import { EnsureAuthenticated } from './../../services/ensure-authenticated.servi
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardQuestionsComponent } from './dashboard-questions/dashboard-questions.component';
 import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-analytics.component';
+import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
 
 const dashboardRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [EnsureAuthenticated],
-        children: [ // TODO: Find a way to only fire canActivate once
+        children: [
             {
-                path: '',
-                component: DashboardHomeComponent
+                path: 'home',
+                component: DashboardHomeComponent,
+                canActivate: [EnsureAuthenticated],
+                /*children: [
+                    {
+                        path: 'zones',
+                        component: DashboardZonesComponent,
+                        canActivate: [EnsureAuthenticated],
+                    }
+                ] */
+            },
+            {
+                path: 'zones',
+                component: DashboardZonesComponent,
+                canActivate: [EnsureAuthenticated],
             },
             {
                 path:'questions',
