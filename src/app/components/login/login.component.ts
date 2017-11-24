@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class LoginComponent {
     // Without placeholder it gives html errors that don't break..
-    user: User = new User();
+    user: User = {}; //= new User();
     constructor(private router: Router, private auth: AuthService) { }
     onLogin(Login: NgForm): void {
         if (Login.valid) {

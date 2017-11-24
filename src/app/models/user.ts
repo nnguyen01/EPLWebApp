@@ -1,5 +1,9 @@
-export class User {
-    constructor(email?: string, password?: string) { }
+export interface User {
+    email?: string,
+    password?: string
+}
+//export class User {
+    //constructor(email?: string, password?: string) { }
 
     /*
     private _email: string;
@@ -25,4 +29,4 @@ export class User {
     set password(newPassword: string) {
         this._password = newPassword;
     } */
-}
+//} 
