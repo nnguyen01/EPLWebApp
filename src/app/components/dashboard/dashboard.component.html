@@ -1,78 +1,46 @@
-<!-->Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewiener/pen/GqgBqN
-<-->
-
-    <body>
-        <!-->
-        <mat-toolbar color="primary">
-            <mat-toolbar-row>
-                <span>EPLScavengerHunt</span>
-                <span class="example-fill-remaining-space"></span>
-                <span>
-                    <button mat-button-raised color="warn" (click)="onLogout()">Logout</button>
-                </span>
-            </mat-toolbar-row>
-        </mat-toolbar>
-        <-->
-        <!-->
-        <mat-menu #appMenu="matMenu">
-            <button mat-menu-item routerLink="/dashboard"> Dashboard </button>
-            <button mat-menu-item routerLink="/dashboard/questions"> Questions </button>
-            <button mat-menu-item routerLink="/dashboard/analytics"> Analytics </button>
-        </mat-menu>
-
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
-            <mat-icon>Menu</mat-icon>
+<mat-toolbar color="primary">
+    <mat-toolbar-row class="mat-toolbar-row">
+        <button class="hamburger mat-button" mat-button="" layout-align="start center" (click)="!sidenav.toggle()">
+            <mat-icon class="mat-icon-button" role="img" svgicon="menu" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+            </mat-icon>
         </button>
-        <-->
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                            aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand unselectable">EPLScavengerHunt</a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a class="unselectable" (click)="onLogout()">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-        </nav>  
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 sidebar">
-                        <ul class="nav nav-sidebar">
-                            <li routerLinkActive="active">
-                                <a routerLink="/dashboard/home">Dashboard</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="/dashboard/questions">Questions</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a routerLink="/dashboard/analytics">Analytics</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <router-outlet></router-outlet>
+        <a class="nav-link home" href="/">
+            <img alt="Home" title="Home" src="assets/EPL_Logo.png">
+        </a>
+        <span></span>
+        <span class="spacer"></span>
+        <a class="unselectable" (click)="onLogout()">Logout</a>
+    </mat-toolbar-row>
+</mat-toolbar>
 
-            <!-- Bootstrap core JavaScript -->
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-            <script src="../../dist/js/bootstrap.min.js"></script>
-            <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-            <script src="../../assets/js/vendor/holder.min.js"></script>
-            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push">
+        <mat-nav-list>
+            <mat-list-item routerLink="/dashboard/home">
+                Dashboard
+            </mat-list-item>
+            <mat-list-item routerLink="/dashboard/questions">
+                Questions
+            </mat-list-item>
+            <mat-list-item routerLink="/dashboard/analytics">
+                Analytics
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <app-dashboard-home></app-dashboard-home>
+    <app-dashboard-questions></app-dashboard-questions>
+    <app-dashboard-analytics></app-dashboard-analytics>
+</mat-sidenav-container>
 
-
-    </body>
+<!-- Bootstrap core JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

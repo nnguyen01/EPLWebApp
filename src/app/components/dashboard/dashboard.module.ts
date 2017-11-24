@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent} from './dashboard.component';
 
 import { EnsureAuthenticated } from './../../services/ensure-authenticated.service';
 
@@ -21,7 +21,7 @@ import { DashboardInfoService } from '../../services/dashboard-info.service';
         DashboardHomeComponent,
         DashboardQuestionsComponent,
         DashboardAnalyticsComponent,
-        DashboardZonesComponent,
+        DashboardZonesComponent
     ],
 
     imports: [

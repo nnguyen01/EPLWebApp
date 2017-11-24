@@ -5,25 +5,50 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
  * Base structure
  */
 
- .example-container {
-    width: 20%;
-    height: 500px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+
+/* Literally don't know why this works
+** https://stackoverflow.com/questions/46666381/unable-to-set-the-height-of-a-angular-material-sidenav-to-100
+*/
+::ng-deep .mat-sidenav-container{
+    height:100vh !important; /* or 100% */
   }
-  
-  .example-sidenav-content {
-    width:20%;
+/*
+*/
+
+mat-sidenav {
+    width: 200px;
+  }
+
+.mat-list .mat-list-item, .mat-nav-list .mat-list-item {
+    display: block;
+}
+
+.hamburger.mat-button {
     height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  }
- .example-fill-remaining-space {
+    margin: 0;
+    padding: 0;
+}
+.spacer {
     flex: 1 1 auto;
   }
+.mat-toolbar-row {
+    padding: 0 0;
+}
+  .mat-toolbar-row a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    text-transform: uppercase;
+}
+
+ .nav-link.home img {
+    position: relative;
+    margin-top: -24px;
+    margin-right: 20px;
+    top: 12px;
+    height: 40px;
+}
 
  mat-grid-tile {
     background: darkblue;
@@ -113,8 +138,8 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
   }
   @media (min-width: 768px) {
     .main {
-      padding-right: 40px;
-      padding-left: 40px;
+      padding-right: 0px;
+      padding-left: 0px;
     }
   }
   .main .page-header {
