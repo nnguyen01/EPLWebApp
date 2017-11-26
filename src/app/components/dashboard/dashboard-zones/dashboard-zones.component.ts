@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./dashboard-zones.component.css']
 })
 export class DashboardZonesComponent implements OnInit {
-    library : LibraryBranch;
+    library: LibraryBranch;
 
     constructor(
         private route: ActivatedRoute) { }

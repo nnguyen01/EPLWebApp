@@ -12,11 +12,10 @@
         </a>
         <span></span>
         <span class="spacer"></span>
-        <a class="unselectable" (click)="onLogout()">Logout</a>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container position="end">
     <mat-sidenav #sidenav mode="push">
         <mat-nav-list>
             <mat-list-item routerLink="/dashboard/home">
@@ -29,6 +28,11 @@
                 Analytics
             </mat-list-item>
         </mat-nav-list>
+        <mat-list>
+            <mat-list-item>
+                <a class="unselectable" (click)="onLogout()">Logout</a>
+            </mat-list-item>
+        </mat-list>
     </mat-sidenav>
     <router-outlet></router-outlet>
 </mat-sidenav-container>
