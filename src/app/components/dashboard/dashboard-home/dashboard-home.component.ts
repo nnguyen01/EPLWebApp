@@ -25,16 +25,18 @@ export class DashboardHomeComponent implements OnInit {
     }
     ngOnInit(): void {
         this.getInfo.getBranch()
-            .then((library) => {
+            .then((library => {
                 console.log(library)
                 if (library.status === 'success') {
                     this.libraries = library.data;
                 }
             }
             )
-            .catch((err) => {
+            )
+            .catch((err => {
                 console.log(err);
             }
+            )
             )
     }
     onClick(name: string): void {

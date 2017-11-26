@@ -11,4 +11,10 @@ export class GetInfoService {
         let url: string = `${this.BASE_URL}/getBranch`;
         return this.http.get(url, { headers: this.headers }).toPromise();
     };
+
+    getZones(branch: string): Promise<any> {
+        let urlParam = encodeURIComponent(branch.trim())
+        let url: string = `${this.BASE_URL}/getZone/` + urlParam;
+        return this.http.get(url, { headers: this.headers }).toPromise();
+    }
 }
