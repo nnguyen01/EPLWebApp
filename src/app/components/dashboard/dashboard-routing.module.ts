@@ -19,19 +19,6 @@ const dashboardRoutes: Routes = [
                 path: 'home',
                 component: DashboardHomeComponent,
                 canActivate: [EnsureAuthenticated],
-                /*
-                children: [
-                    {
-                        path: ':zone',
-                        component: DashboardZonesComponent,
-                        canActivate: [EnsureAuthenticated],
-                    }
-                ] */
-            },
-            {
-                path: ':zone',
-                component: DashboardZonesComponent,
-                canActivate: [EnsureAuthenticated],
             },
             {
                 path:'questions',
@@ -42,6 +29,11 @@ const dashboardRoutes: Routes = [
                 path:'analytics',
                 component: DashboardAnalyticsComponent,
                 canActivate: [EnsureAuthenticated]
+            },
+            {
+                path: ':zone',
+                component: DashboardZonesComponent,
+                canActivate: [EnsureAuthenticated],
             }
         ]
     }
