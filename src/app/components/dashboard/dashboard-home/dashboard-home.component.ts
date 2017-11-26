@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 import { GetInfoService } from '../../../services/get-info.service';
-import { DashboardInfoService } from '../../../services/dashboard-info.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -17,10 +15,10 @@ import { LibraryBranch } from '../../../models/library-branch';
 export class DashboardHomeComponent implements OnInit {
     libraries: LibraryBranch[] = [];
     constructor(
+        private router: Router,
         private getInfo: GetInfoService,
         private iconRegistry: MatIconRegistry,
-        private sanitizer: DomSanitizer,
-        private dashService: DashboardInfoService) {
+        private sanitizer: DomSanitizer) {
         iconRegistry.addSvgIcon(
             'settings',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/settings.svg'));
@@ -40,6 +38,6 @@ export class DashboardHomeComponent implements OnInit {
             )
     }
     onClick(name: string): void {
-        this.dashService.getBranch(name);
+        this.router.navigateByUrl('/dashboard/zones');
     }
 }

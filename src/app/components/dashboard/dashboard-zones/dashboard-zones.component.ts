@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { DashboardInfoService } from '../../../services/dashboard-info.service';
-
 import { LibraryBranch } from '../../../models/library-branch';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -13,20 +12,15 @@ import { LibraryBranch } from '../../../models/library-branch';
     styleUrls: ['./dashboard-zones.component.css']
 })
 export class DashboardZonesComponent implements OnInit {
-    @Input() sick: string;
     library : LibraryBranch;
 
-    constructor(private dashService: DashboardInfoService) { 
-        console.log(this.sick);
-        dashService.branch$.subscribe(
-            libraryName => {
-                console.log("hello1");
-                console.log(libraryName);
-                console.log("hello2");
-            }
-        )
-    }
-    ngOnInit(): void {
-    }
+    constructor(
+        private route: ActivatedRoute) { }
 
+    ngOnInit(): void {
+        this.route.params.subscribe(params => {
+            this.library = params['zone'];
+        })
+        console.log(this.library);
+    }
 }

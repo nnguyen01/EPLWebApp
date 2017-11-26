@@ -21,7 +21,7 @@ export class AuthService {
         let headers: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
-        }); 
+        });
         return this.http.get(url, { headers: headers }).toPromise();
     }
     logout(token): Promise<any> {

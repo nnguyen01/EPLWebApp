@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
                     console.log(user);
                     if (user.status === 'success') {
                         this.router.navigateByUrl('/dashboard/home');
-                        // Maybe add something here?
                     }
                 }
                 )

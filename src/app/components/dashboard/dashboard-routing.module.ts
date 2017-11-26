@@ -19,16 +19,17 @@ const dashboardRoutes: Routes = [
                 path: 'home',
                 component: DashboardHomeComponent,
                 canActivate: [EnsureAuthenticated],
-                /*children: [
+                /*
+                children: [
                     {
-                        path: 'zones',
+                        path: ':zone',
                         component: DashboardZonesComponent,
                         canActivate: [EnsureAuthenticated],
                     }
                 ] */
             },
             {
-                path: 'zones',
+                path: ':zone',
                 component: DashboardZonesComponent,
                 canActivate: [EnsureAuthenticated],
             },
@@ -43,7 +44,7 @@ const dashboardRoutes: Routes = [
                 canActivate: [EnsureAuthenticated]
             }
         ]
-    },
+    }
 ];
 
 @NgModule({

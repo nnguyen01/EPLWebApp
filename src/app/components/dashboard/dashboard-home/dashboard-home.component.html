@@ -1,7 +1,7 @@
 <div class="main">
     <mat-grid-list cols="3" rowHeight="250px">
         <mat-grid-tile *ngFor="let library of libraries">
-            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/zones" class="nofocus" (click)="onClick(library.branch)">
+            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" class="nofocus">
             <mat-grid-tile-footer>
                 <h3 mat-line>{{library.branch}}</h3>
                 <span mat-line>Branch</span>

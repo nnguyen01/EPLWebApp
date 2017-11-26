@@ -13,7 +13,6 @@ import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-ana
 
 import { CustomMaterialsModule } from '../../custom-materials.module';
 import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
-import { DashboardInfoService } from '../../services/dashboard-info.service';
 
 @NgModule({
     declarations: [
@@ -32,8 +31,7 @@ import { DashboardInfoService } from '../../services/dashboard-info.service';
     ],
 
     providers: [
-        EnsureAuthenticated,
-        DashboardInfoService
+        EnsureAuthenticated
     ]
 })
 
