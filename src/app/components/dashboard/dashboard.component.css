@@ -15,6 +15,12 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
 /*
 */
 
+.bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
 mat-sidenav {
     width: 200px;
   }

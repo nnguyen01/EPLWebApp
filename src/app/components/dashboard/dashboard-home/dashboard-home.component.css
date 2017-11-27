@@ -5,6 +5,7 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
 /*
  * Base structure
  */
+
  .nofocus:focus {
     outline: none;
 }
@@ -109,6 +110,11 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
   }
   .main .page-header {
     margin-top: 0;
+  }
+
+  .main .overflow-content {
+      overflow: auto;
+      height:100%;
   }
   
   

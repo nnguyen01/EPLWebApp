@@ -15,8 +15,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container position="end">
-    <mat-sidenav #sidenav mode="push">
+<mat-sidenav-container position="end" class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened="true">
         <mat-nav-list>
             <mat-list-item routerLink="/dashboard/home">
                 Dashboard
@@ -28,7 +28,7 @@
                 Analytics
             </mat-list-item>
         </mat-nav-list>
-        <mat-list>
+        <mat-list class="bottom">
             <mat-list-item>
                 <a class="unselectable" (click)="onLogout()">Logout</a>
             </mat-list-item>
