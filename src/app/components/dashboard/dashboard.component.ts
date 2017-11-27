@@ -9,6 +9,7 @@ import { slideInDownAnimation } from '../../animations';
     styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+    isLaunched: boolean = true;
     constructor(
         private router: Router,
         private auth: AuthService) { }

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="app-toolbar">
     <mat-toolbar-row class="mat-toolbar-row">
         <button class="hamburger mat-button" mat-button="" layout-align="start center" (click)="!sidenav.toggle()">
             <mat-icon class="mat-icon-button" role="img" svgicon="menu" aria-hidden="true">
@@ -16,7 +16,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container position="end" class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-sidenav #sidenav mode="side" opened="true" fixedInViewport="fixed" fixedTopGap="64">
         <mat-nav-list>
             <mat-list-item routerLink="/dashboard/home">
                 Dashboard

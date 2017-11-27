@@ -1,32 +1,54 @@
-/**
-Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewiener/pen/GqgBqN
-**/
-/*
- * Base structure
- */
-
-
 /* Literally don't know why this works
 ** https://stackoverflow.com/questions/46666381/unable-to-set-the-height-of-a-angular-material-sidenav-to-100
 */
-::ng-deep .mat-sidenav-container{
-    height:100vh !important; /* or 100% */
-  }
-/*
-*/
 
+/*
+::ng-deep .mat-sidenav-container{
+    height:100vh !important;
+} */
+
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0;
+    z-index: 1000; 
+}
+
+.mat-elevation-z3 {
+    position: relative;
+    z-index: 2;
+}
+ 
 .bottom {
     position: absolute;
     width: 100%;
-    bottom: 10px;
+    bottom: 70px;
 }
+  
 
 mat-sidenav {
     width: 200px;
-  }
+    border-right: 1px solid #BDBDBD;
+}
 
-.mat-list .mat-list-item, .mat-nav-list .mat-list-item {
-    display: block;
+.mat-sidenav-container {
+    min-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    flex: 1;
+}
+.mat-sidenav {
+    min-width: 250px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.mat-toolbar {
+    flex: 0;
 }
 
 .hamburger.mat-button {
@@ -34,13 +56,16 @@ mat-sidenav {
     margin: 0;
     padding: 0;
 }
+
 .spacer {
     flex: 1 1 auto;
-  }
+}
+
 .mat-toolbar-row {
     padding: 0 0;
 }
-  .mat-toolbar-row a {
+
+.mat-toolbar-row a {
     font-size: 16px;
     font-weight: 400;
     color: #fff;
@@ -48,17 +73,13 @@ mat-sidenav {
     text-transform: uppercase;
 }
 
- .nav-link.home img {
+.nav-link.home img {
     position: relative;
     margin-top: -24px;
     margin-right: 20px;
     top: 12px;
     height: 40px;
 }
-
- mat-grid-tile {
-    background: darkblue;
-  }
 
 .unselectable {
   -webkit-touch-callout: none;
@@ -68,106 +89,3 @@ mat-sidenav {
   -ms-user-select: none;
   user-select: none;
 }
-
- 
-  /* Move down content because we have a fixed navbar that is 50px tall */
-  body {
-    padding-top: 50px;
-  }
-  
-  
-  /*
-   * Global add-ons
-   */
-  
-  .sub-header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  /*
-   * Top navigation
-   * Hide default border to remove 1px line.
-   */
-  .navbar-fixed-top {
-    border: 0;
-  }
-  
-  /*
-   * Sidebar
-   */
-  
-  /* Hide for mobile, show later */
-  .sidebar {
-    display: none;
-  }
-  @media (min-width: 768px) {
-    .sidebar {
-      position: fixed;
-      top: 51px;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
-      display: block;
-      padding: 20px;
-      overflow-x: hidden;
-      overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-      background-color: #f5f5f5;
-      border-right: 1px solid #eee;
-    }
-  }
-  
-  /* Sidebar navigation */
-  .nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 20px;
-    margin-left: -20px;
-  }
-  .nav-sidebar > li > a {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .nav-sidebar > .active > a,
-  .nav-sidebar > .active > a:hover,
-  .nav-sidebar > .active > a:focus {
-    color: #fff;
-    background-color: #428bca;
-  }
-  
-  
-  /*
-   * Main content
-   */
-  
-  .main {
-    padding: 20px;
-  }
-  @media (min-width: 768px) {
-    .main {
-      padding-right: 0px;
-      padding-left: 0px;
-    }
-  }
-  .main .page-header {
-    margin-top: 0;
-  }
-  
-  
-  /*
-   * Placeholder dashboard ideas
-   */
-  
-  .placeholders {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  .placeholders h4 {
-    margin-bottom: 0;
-  }
-  .placeholder {
-    margin-bottom: 20px;
-  }
-  .placeholder img {
-    display: inline-block;
-    border-radius: 50%;
-  }
