@@ -1,17 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GetInfoService } from '../../../services/get-info.service';
 import { Zone } from '../../../models/zone';
-
-
+import { slideInDownAnimation } from '../../../animations';
 
 @Component({
     selector: 'app-dashboard-zones',
     templateUrl: './dashboard-zones.component.html',
-    styleUrls: ['./dashboard-zones.component.css']
+    styleUrls: ['./dashboard-zones.component.css'],
+    animations: [ slideInDownAnimation ]
 })
 export class DashboardZonesComponent implements OnInit {
+    @HostBinding('@routeAnimation') routeAnimation = true;
+    @HostBinding('style.display')   display = 'block';
+    @HostBinding('style.position')  position = 'absolute';
+
     branchName: string;
     zones: Zone[] = [];
 
@@ -23,11 +27,9 @@ export class DashboardZonesComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.branchName = params['zone'];
         })
-        console.log(this.branchName);
 
         this.getInfo.getZones(this.branchName)
             .then((zones => {
-                console.log(zones);
                 if (zones.status === 'success') {
                     this.zones = zones.data;
                 }
@@ -39,6 +41,5 @@ export class DashboardZonesComponent implements OnInit {
             }
             )
             )
-        console.log(this.zones);
     }
 }
