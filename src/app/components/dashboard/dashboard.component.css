@@ -18,14 +18,17 @@
     position: sticky;
     z-index: 2;
 }
- 
+
+.logout-border {
+    border-top: 1px solid rgb(253, 28, 28);
+}
+
 .bottom {
     position: absolute;
     width: 100%;
     bottom: 70px;
 }
   
-
 mat-sidenav {
     width: 200px;
     border-right: 1px solid #BDBDBD;

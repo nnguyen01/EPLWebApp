@@ -1,3 +1,8 @@
+.main {
+    height: 100%;
+    overflow: hidden !important;
+}
+
 .nofocus:focus {
     outline: none;
 }

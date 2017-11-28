@@ -12,16 +12,18 @@ export class GetInfoService {
         let url: string = `${this.BASE_URL}/getBranch`;
         return this.http.get(url, { headers: this.headers }).toPromise();
     };
-    /*
-    getZones(branch: string): Promise<any> {
-        let urlParam = encodeURIComponent(branch.trim());
-        let url: string = `${this.BASE_URL}/getZone/` + urlParam;
-        return this.http.get(url, { headers: this.headers }).toPromise();
-    } */
 
     getZones(branch: string): Observable<any> {
         let urlParam = encodeURIComponent(branch.trim());
         let url: string = `${this.BASE_URL}/getZone/` + urlParam;
         return this.http.get(url, { headers: this.headers });
+    }
+
+    getQuestions(branch: string, zone: string): Promise<any> {
+        branch = encodeURIComponent(branch.trim());
+        zone = encodeURIComponent(zone.trim());
+        let urlParam = zone + '/' + branch;
+        let url: string = `${this.BASE_URL}/getQuestion/` + urlParam;
+        return this.http.get(url, { headers: this.headers }).toPromise();
     }
 }

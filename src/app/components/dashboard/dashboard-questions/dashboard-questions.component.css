@@ -4,6 +4,11 @@ Original code accessed and retireved on Nov 3 2017 from https://codepen.io/ewien
 /*
  * Base structure
  */
+ .main {
+    height: 100%;
+    overflow: hidden;
+}
+
  .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

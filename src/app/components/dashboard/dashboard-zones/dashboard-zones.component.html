@@ -1,11 +1,9 @@
 <mat-card>
     <mat-tab-group class="tab-group">
-        hello
         <mat-tab *ngFor="let zone of zones" label="{{zone.zone}}">
             <mat-card-content>
                 <form>
                     <br>
-
                     <table style="width: 100%" cellspacing="0">
                         <tr>
                             <td>
@@ -28,12 +26,12 @@
                         <tr>
                             <td>
                                 <mat-form-field class="full-width">
-                                    <input matInput placeholder="Branch" value="{{zone.branch}}">
+                                    <input matInput placeholder="Branch" value="{{zone.branch}}" disabled>
                                 </mat-form-field>
                             </td>
                             <td>
                                 <mat-form-field class="full-width">
-                                    <input matInput #postalCode maxLength="7" placeholder="Color" value="{{zone.color}}">
+                                    <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}">
                                 </mat-form-field>
                             </td>
                         </tr>
@@ -42,4 +40,36 @@
             </mat-card-content>
         </mat-tab>
     </mat-tab-group>
+
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Personal data
+            </mat-panel-title>
+            <mat-panel-description>
+                Type your name and age
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input matInput placeholder="First name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Age">
+        </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+</mat-accordion>
 </mat-card>

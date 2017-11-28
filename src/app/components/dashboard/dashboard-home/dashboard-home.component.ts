@@ -26,7 +26,6 @@ export class DashboardHomeComponent implements OnInit {
     ngOnInit(): void {
         this.getInfo.getBranch()
             .then((library => {
-                console.log(library)
                 if (library.status === 'success') {
                     this.libraries = library.data;
                 }

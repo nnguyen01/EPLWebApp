@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GetInfoService } from '../../../services/get-info.service';
 import { Zone } from '../../../models/zone';
+import { Question } from '../../../models/question';
 import { slideInDownAnimation } from '../../../animations';
 
 @Component({
@@ -20,6 +21,7 @@ export class DashboardZonesComponent implements OnInit {
 
     branchName: string;
     zones: Zone[] = [];
+    questions: Question[] = [];
 
     constructor(
         private route: ActivatedRoute,
@@ -36,7 +38,20 @@ export class DashboardZonesComponent implements OnInit {
                 for (let entry of this.zones) {
                     entry.zone = entry.zone.replace(/_/g, " ");
                 }
-                console.log(this.zones);
             });
+
+        this.getInfo.getQuestions("Clareview", "Music_&_Movies")
+            .then((question => {
+                if (question.status === 'success') {
+                    this.questions = question.data;
+                }
+            }
+            )
+            )
+            .catch((err => {
+                console.log(err)
+            }
+            )
+            )
     }
 }

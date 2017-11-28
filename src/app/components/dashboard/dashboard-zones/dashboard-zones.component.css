@@ -1,5 +1,7 @@
 .mat-card {
     margin: 24px;
+    height: 100%;
+    overflow: hidden !important;
 }
 
 .basic-form {
