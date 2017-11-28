@@ -1,9 +1,27 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
+.mat-card {
+    margin: 24px;
+}
+
+.basic-form {
+    padding: 0;
+}
+
+.basic-form .mat-card-content {
+    padding: 16px;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.full-width {
     width: 100%;
 }
 
-.example-full-width {
+.tab-group {
     width: 100%;
+}
+  
+.demo-tab-content {
+    padding: 16px;
 }

@@ -23,15 +23,13 @@ export class DashboardComponent implements OnInit {
                     if (user.status === 'success') {
                         this.router.navigateByUrl('/dashboard/home');
                     }
-                }
-                )
+                })
                 .catch((err) => {
                     alert("Please Login Again")
                     localStorage.removeItem('token')
                     this.router.navigateByUrl('/login');
                     console.log(err);
-                }
-                )
+                })
         }
     }
 

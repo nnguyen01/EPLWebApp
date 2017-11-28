@@ -14,8 +14,8 @@
     z-index: 1000; 
 }
 
-.mat-elevation-z3 {
-    position: relative;
+.mat-elevation-z2 {
+    position: sticky;
     z-index: 2;
 }
  

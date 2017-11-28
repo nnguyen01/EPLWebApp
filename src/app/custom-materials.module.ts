@@ -5,12 +5,14 @@ import {
     MatButtonModule,
     MatButtonToggleModule,
     MatCheckboxModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
 
@@ -21,12 +23,14 @@ import {
         MatButtonModule,
         MatButtonToggleModule,
         MatCheckboxModule,
+        MatFormFieldModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
         MatListModule,
         MatMenuModule,
         MatSidenavModule,
+        MatTabsModule,
         MatToolbarModule
     ],
     exports: [
@@ -34,12 +38,14 @@ import {
         MatButtonModule,
         MatButtonToggleModule,
         MatCheckboxModule,
+        MatFormFieldModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
         MatListModule,
         MatMenuModule,
         MatSidenavModule,
+        MatTabsModule,
         MatToolbarModule
     ]
 })

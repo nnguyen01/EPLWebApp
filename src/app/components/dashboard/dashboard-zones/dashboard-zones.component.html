@@ -1,65 +1,45 @@
-{{branchName}}
-<mat-card class="mat-elevation-z5">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Company (disabled)" disabled value="Google">
-        </mat-form-field>
+<mat-card>
+    <mat-tab-group class="tab-group">
+        hello
+        <mat-tab *ngFor="let zone of zones" label="{{zone.zone}}">
+            <mat-card-content>
+                <form>
+                    <br>
 
-        <table class="example-full-width" cellspacing="0">
-            <tr>
-                <td>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="First name">
+                    <table style="width: 100%" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Zone" value="{{zone.zone}}">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Category" value="{{zone.category}}">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                    <mat-form-field class="half-width">
+                        <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}">
                     </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Long Last Name That Will Be Truncated">
-                    </mat-form-field>
-                </td>
-            </tr>
-        </table>
 
-        <p>
-            <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Address 2"></textarea>
-            </mat-form-field>
-        </p>
-
-        <table class="example-full-width" cellspacing="0">
-            <tr>
-                <td>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="City">
-                    </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="State">
-                    </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="example-full-width">
-                        <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-                    </mat-form-field>
-                </td>
-            </tr>
-        </table>
-    </form>
+                    <table style="width: 100%" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="full-width">
+                                    <input matInput placeholder="Branch" value="{{zone.branch}}">
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="full-width">
+                                    <input matInput #postalCode maxLength="7" placeholder="Color" value="{{zone.color}}">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </mat-card-content>
+        </mat-tab>
+    </mat-tab-group>
 </mat-card>
-
-
-<!-- Bootstrap core JavaScript
-            ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

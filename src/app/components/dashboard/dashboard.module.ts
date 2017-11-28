@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardComponent} from './dashboard.component';
 
@@ -26,6 +26,7 @@ import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.compo
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         CustomMaterialsModule,
         DashboardRoutingModule
     ],

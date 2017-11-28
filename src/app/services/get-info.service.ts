@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GetInfoService {
@@ -11,10 +12,16 @@ export class GetInfoService {
         let url: string = `${this.BASE_URL}/getBranch`;
         return this.http.get(url, { headers: this.headers }).toPromise();
     };
-
+    /*
     getZones(branch: string): Promise<any> {
-        let urlParam = encodeURIComponent(branch.trim())
+        let urlParam = encodeURIComponent(branch.trim());
         let url: string = `${this.BASE_URL}/getZone/` + urlParam;
         return this.http.get(url, { headers: this.headers }).toPromise();
+    } */
+
+    getZones(branch: string): Observable<any> {
+        let urlParam = encodeURIComponent(branch.trim());
+        let url: string = `${this.BASE_URL}/getZone/` + urlParam;
+        return this.http.get(url, { headers: this.headers });
     }
 }
