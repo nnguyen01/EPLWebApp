@@ -4,6 +4,15 @@
     overflow: hidden !important;
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .basic-form {
     padding: 0;
 }
@@ -13,7 +22,7 @@
 }
 
 .half-width {
-    width: 50%;
+    width: 75%;
 }
 
 .full-width {

@@ -22,6 +22,7 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
+    panelOopenState: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,11 +40,12 @@ export class DashboardZonesComponent implements OnInit {
                     entry.zone = entry.zone.replace(/_/g, " ");
                 }
             });
-
+        
         this.getInfo.getQuestions("Clareview", "Music_&_Movies")
             .then((question => {
                 if (question.status === 'success') {
                     this.questions = question.data;
+                    console.log(this.questions);
                 }
             }
             )

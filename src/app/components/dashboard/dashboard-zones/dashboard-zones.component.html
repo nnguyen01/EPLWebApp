@@ -41,35 +41,48 @@
         </mat-tab>
     </mat-tab-group>
 
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Personal data
-            </mat-panel-title>
-            <mat-panel-description>
-                Type your name and age
-            </mat-panel-description>
-        </mat-expansion-panel-header>
+    <br>
 
-        <mat-form-field>
-            <input matInput placeholder="First name">
-        </mat-form-field>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let question of questions" style="padding:12px" class="unselectable">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{question.Prompt}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form>
+                <br>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Prompt" value="{{question.Prompt}}">
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Age">
-        </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Self aware panel
-            </mat-panel-title>
-            <mat-panel-description>
-                Currently I am {{panelOpenState ? 'open' : 'closed'}}
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-</mat-accordion>
+                <table style="width: 100%" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="half-width">
+                                <input matInput placeholder="Choices" value="{{question.Choices}}">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="half-width">
+                                <input matInput placeholder="Solution" value="{{question.Solution}}">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Branch" value="{{question.branch}}">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Image Link" value="{{question.iLink}}">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Sound Link" value="{{question.sLink}}">
+                </mat-form-field>
+            </form>
+        </mat-expansion-panel>
+    </mat-accordion>
 </mat-card>
