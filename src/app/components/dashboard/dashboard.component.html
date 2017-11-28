@@ -15,7 +15,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container position="end" class="sidenav-container">
+<mat-sidenav-container position="end" class="sidenav-container" overflow="hidden">
     <mat-sidenav #sidenav mode="side" opened="true" fixedInViewport="fixed" fixedTopGap="64">
         <mat-nav-list>
             <mat-list-item routerLink="/dashboard/home">
@@ -29,7 +29,7 @@
             </mat-list-item>
         </mat-nav-list>
         <mat-nav-list class="bottom">
-            <mat-list-item class="logout-border" (click)="onLogout()">
+            <mat-list-item (click)="onLogout()">
                 <a class="unselectable">
                     Sign Out
                 </a>

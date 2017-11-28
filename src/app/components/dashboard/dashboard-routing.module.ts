@@ -37,7 +37,7 @@ const dashboardRoutes: Routes = [
                 canActivate: [EnsureAuthenticated],
                 resolve: {
                     zone: DashboardZoneResolver
-                }
+                },
             }
         ]
     }

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GetInfoService } from '../../../services/get-info.service';
 import { Zone } from '../../../models/zone';
 import { Question } from '../../../models/question';
 import { slideInDownAnimation } from '../../../animations';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
     moduleId: module.id,
@@ -22,11 +23,19 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
-    panelOopenState: boolean = true;
+    loaded: boolean = false;
+
+    selectedTab: number = 0;
+    tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
+        this.loaded = false;
+        this.selectedTab = tabChangeEvent.index;
+        this.zoneDisplay(this.branchName, this.zones[this.selectedTab].zone);
+    }
 
     constructor(
         private route: ActivatedRoute,
-        private getInfo: GetInfoService) { }
+        private getInfo: GetInfoService,
+        private changeDetect: ChangeDetectorRef) { }
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
@@ -40,12 +49,18 @@ export class DashboardZonesComponent implements OnInit {
                     entry.zone = entry.zone.replace(/_/g, " ");
                 }
             });
-        
-        this.getInfo.getQuestions("Clareview", "Music_&_Movies")
+
+        this.zoneDisplay(this.branchName, this.zones[this.selectedTab].zone);
+    }
+
+    zoneDisplay(branch: string, zone: string): void {
+        zone = zone.replace(/\s/g,"_");
+        this.getInfo.getQuestions(branch, zone)
             .then((question => {
                 if (question.status === 'success') {
                     this.questions = question.data;
-                    console.log(this.questions);
+                    this.loaded = true;
+                    this.changeDetect.markForCheck();
                 }
             }
             )

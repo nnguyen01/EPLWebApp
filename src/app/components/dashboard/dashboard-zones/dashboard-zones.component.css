@@ -1,7 +1,15 @@
 .mat-card {
     margin: 24px;
     height: 100%;
-    overflow: hidden !important;
+}
+
+.panel-title-color {
+    color: #263238;
+}
+
+.main {
+    position: relative;
+    overflow-y: hidden; 
 }
 
 .unselectable {
@@ -22,7 +30,7 @@
 }
 
 .half-width {
-    width: 75%;
+    width: 50%;
 }
 
 .full-width {
@@ -30,6 +38,7 @@
 }
 
 .tab-group {
+    overflow: hidden;
     width: 100%;
 }
   

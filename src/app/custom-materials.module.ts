@@ -12,6 +12,7 @@ import {
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatSelectModule,
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule
@@ -31,6 +32,7 @@ import {
         MatInputModule,
         MatListModule,
         MatMenuModule,
+        MatSelectModule,
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule
@@ -47,6 +49,7 @@ import {
         MatInputModule,
         MatListModule,
         MatMenuModule,
+        MatSelectModule,
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule
