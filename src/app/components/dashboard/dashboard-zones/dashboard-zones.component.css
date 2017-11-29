@@ -1,0 +1,47 @@
+.mat-card {
+    margin: 24px;
+    height: 100%;
+}
+
+.panel-title-color {
+    color: #263238;
+}
+
+.main {
+    position: relative;
+    overflow-y: hidden; 
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.basic-form {
+    padding: 0;
+}
+
+.basic-form .mat-card-content {
+    padding: 16px;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.tab-group {
+    overflow: hidden;
+    width: 100%;
+}
+  
+.demo-tab-content {
+    padding: 16px;
+}

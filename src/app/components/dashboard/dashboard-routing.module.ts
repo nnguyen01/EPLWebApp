@@ -8,6 +8,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { DashboardQuestionsComponent } from './dashboard-questions/dashboard-questions.component';
 import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-analytics.component';
 import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
+import { DashboardZoneResolver } from '../../services/dashboard-zone-resolver.service';
 
 const dashboardRoutes: Routes = [
     {
@@ -31,9 +32,12 @@ const dashboardRoutes: Routes = [
                 canActivate: [EnsureAuthenticated]
             },
             {
-                path: ':zone',
+                path: ':branch',
                 component: DashboardZonesComponent,
                 canActivate: [EnsureAuthenticated],
+                resolve: {
+                    zone: DashboardZoneResolver
+                },
             }
         ]
     }
@@ -45,6 +49,9 @@ const dashboardRoutes: Routes = [
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        DashboardZoneResolver
     ]
 })
 

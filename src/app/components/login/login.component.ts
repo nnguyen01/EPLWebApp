@@ -22,8 +22,13 @@ export class LoginComponent {
                     this.router.navigateByUrl('/dashboard');
                 })
                 .catch((err) => {
-                    console.log(err);
-                    alert("The username and password combination do not match our records.")
+                    console.log(err)
+                    if (err.status === 0) {
+                        alert("Cannot connect to the internet. Please check your connection.")
+                    }
+                    if (err.status === 404) {
+                        alert("The username and password combination do not match our records.")
+                    }
                 });
         }
     }

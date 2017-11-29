@@ -1,13 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { slideInDownAnimation } from '../../animations';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+    isLaunched: boolean = true;
     constructor(
         private router: Router,
         private auth: AuthService) { }
@@ -21,15 +23,13 @@ export class DashboardComponent implements OnInit {
                     if (user.status === 'success') {
                         this.router.navigateByUrl('/dashboard/home');
                     }
-                }
-                )
+                })
                 .catch((err) => {
                     alert("Please Login Again")
                     localStorage.removeItem('token')
                     this.router.navigateByUrl('/login');
                     console.log(err);
-                }
-                )
+                })
         }
     }
 
