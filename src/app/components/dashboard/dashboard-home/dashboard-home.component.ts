@@ -19,11 +19,12 @@ export class DashboardHomeComponent implements OnInit {
         private getInfo: GetInfoService,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
-            /*
-        iconRegistry.addSvgIcon(
-            'settings',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/img/settings.svg')); */
-    }
+        iconRegistry
+            .addSvgIcon('delete',
+                sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'))
+            .addSvgIcon('edit',
+                sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'))
+        }
     ngOnInit(): void {
         this.getInfo.getBranch()
             .then((library => {
@@ -38,8 +39,5 @@ export class DashboardHomeComponent implements OnInit {
             }
             )
             )
-    }
-    onClick(name: string): void {
-        this.router.navigateByUrl('/dashboard/zones');
     }
 }
