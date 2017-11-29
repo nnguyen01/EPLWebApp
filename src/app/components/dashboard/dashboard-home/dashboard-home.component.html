@@ -1,14 +1,28 @@
 <div class="main overflow-content">
     <mat-grid-list cols="3" rowHeight="250px" gutterSize="16" style="margin:16px">
-        <mat-grid-tile *ngFor="let library of libraries">
-            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" layout-fill>
-            <mat-grid-tile-footer>
-                <h3 mat-line>{{library.branch}}</h3>
-                <span mat-line>Branch</span>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="settings">settings</mat-icon>
-                </button>
+        <mat-grid-tile *ngFor="let library of libraries" class="container" border="10px #4353FF">
+            <mat-grid-tile-header>
+
+            </mat-grid-tile-header>
+            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" class="image-hover">
+            <div class="text-hover">
+                <span>
+                    <font face="Roboto" size="3" color="#4353FF">
+                        <b>View Zones</b>
+                    </font>
+                    <font face="Passion One" size="4" color="#4353FF">
+                        <b>&nbsp;&nbsp;></b>
+                    </font>
+                </span>
+            </div>
+            <mat-grid-tile-footer class="mat-grid-tile-footer">
+                <font face="Roboto" mat-line>
+                    {{library.branch}}
+                </font>
             </mat-grid-tile-footer>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Passion+One:700" rel="stylesheet">

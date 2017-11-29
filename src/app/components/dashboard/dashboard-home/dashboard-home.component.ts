@@ -19,9 +19,10 @@ export class DashboardHomeComponent implements OnInit {
         private getInfo: GetInfoService,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
+            /*
         iconRegistry.addSvgIcon(
             'settings',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/img/settings.svg'));
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/settings.svg')); */
     }
     ngOnInit(): void {
         this.getInfo.getBranch()
