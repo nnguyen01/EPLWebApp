@@ -7,6 +7,10 @@
     outline: none;
 }
 
+.mat-icon-focus {
+    transition: .5s ease;
+}
+
 .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -21,7 +25,7 @@
 }
 
 .mat-grid-tile .mat-grid-tile-header {
-    background:none;
+    background: transparent;
 }
 
 .mat-grid-tile .mat-grid-tile-footer {
@@ -66,6 +70,6 @@ img {
     opacity: 1;
 }
 
-.container:hover .mat-grid-tile-header {
+.container:hover .header-hover {
     opacity: 1;
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DashboardComponent} from './dashboard.component';
+import { DashboardComponent } from './dashboard.component';
 
 import { EnsureAuthenticated } from './../../services/ensure-authenticated.service';
 
@@ -13,6 +13,7 @@ import { DashboardAnalyticsComponent } from './dashboard-analytics/dashboard-ana
 
 import { CustomMaterialsModule } from '../../custom-materials.module';
 import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
+import { EditBranchDialogComponent } from './dialogs/edit-branch-dialog/edit-branch-dialog.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.compo
         DashboardHomeComponent,
         DashboardQuestionsComponent,
         DashboardAnalyticsComponent,
-        DashboardZonesComponent
+        DashboardZonesComponent,
+        EditBranchDialogComponent,
     ],
 
     imports: [
@@ -33,7 +35,9 @@ import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.compo
 
     providers: [
         EnsureAuthenticated
-    ]
+    ],
+
+    entryComponents: [EditBranchDialogComponent]
 })
 
 export class DashboardModule { }
