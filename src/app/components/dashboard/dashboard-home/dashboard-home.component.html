@@ -5,8 +5,8 @@
 
             </mat-grid-tile-header>
             <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" class="image-hover">
-            <div class="text-hover">
-                <span>
+            <div class="text-hover unselectable">
+                <span routerLink="/dashboard/{{library.branch}}" class="unselectable">
                     <font face="Roboto" size="3" color="#4353FF">
                         <b>View Zones</b>
                     </font>
