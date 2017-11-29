@@ -28,7 +28,7 @@ export class DashboardHomeComponent implements OnInit {
             .addSvgIcon('delete',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'))
             .addSvgIcon('edit',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'))
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'));
     }
 
     ngOnInit(): void {
@@ -49,10 +49,14 @@ export class DashboardHomeComponent implements OnInit {
 
 
 
-    openDialog(): void {
+    openDialog(library: LibraryBranch): void {
         this.branchLink = false;
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
-            width: '250px',
+            width: '400px',
+            data: { 
+                branch: library.branch,
+                iLink: library.iLink
+            }
         });
 
         dialogRef.afterClosed().subscribe(result => {

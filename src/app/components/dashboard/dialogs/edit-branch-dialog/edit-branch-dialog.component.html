@@ -1,7 +1,14 @@
-<h1 mat-dialog-title>Hi Nathan</h1>
+<h1 mat-dialog-title>
+    <mat-icon svgIcon="edit"></mat-icon>
+    {{library.branch}}
+</h1>
 <div mat-dialog-content>
-    <p>What's your favorite animal?</p>
-    <mat-form-field>
-        <input matInput tabindex="1" Prompt="hello">
-    </mat-form-field>
+    <form>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" value="{{library.branch}}">
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Image Link" value="{{library.iLink}}">
+        </mat-form-field>
+    </form>
 </div>
