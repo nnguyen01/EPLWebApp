@@ -15,11 +15,13 @@
             <mat-grid-tile-header class="header-hover">
                 <span mat-line></span>
                 <span mat-line></span>
-                <button mat-icon-button (click)="openDialog(library)">
-                    <mat-icon svgIcon="edit"></mat-icon>
+                <button mat-icon-button (click)="openEditDialog(library)">
+                    <mat-icon matTooltip="Edit branch" matTooltipPosition="above" svgIcon="edit">
+                    </mat-icon>
                 </button>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="delete"></mat-icon>
+                <button mat-icon-button (click)="openDeleteDialog(library)">
+                    <mat-icon matTooltip="Delete branch" matTooltipPosition="above" svgIcon="delete">
+                    </mat-icon>
                 </button>
             </mat-grid-tile-header>
             <mat-grid-tile-footer routerLink="/dashboard/{{library.branch}}">

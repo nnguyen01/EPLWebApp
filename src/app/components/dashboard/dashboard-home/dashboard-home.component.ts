@@ -7,7 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
 import { LibraryBranch } from '../../../models/library-branch';
-import { EditBranchDialogComponent } from '../dialogs/edit-branch-dialog/edit-branch-dialog.component'
+import { EditBranchDialogComponent } from '../../dialogs/edit-branch-dialog/edit-branch-dialog.component'
+import { DeleteBranchDialogComponent } from '../../dialogs/delete-branch-dialog/delete-branch-dialog.component';
 
 @Component({
     selector: 'app-dashboard-home',
@@ -47,15 +48,28 @@ export class DashboardHomeComponent implements OnInit {
             )
     }
 
-
-
-    openDialog(library: LibraryBranch): void {
+    openEditDialog(library: LibraryBranch): void {
         this.branchLink = false;
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
             width: '400px',
             data: { 
                 branch: library.branch,
                 iLink: library.iLink
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.branchLink = true;
+            console.log('The dialog was closed');
+        });
+    }
+
+    openDeleteDialog(library: LibraryBranch): void {
+        this.branchLink = false;
+        let dialogRef = this.dialog.open(DeleteBranchDialogComponent, {
+            width: '250px',
+            data: { 
+                branch: library.branch
             }
         });
 
