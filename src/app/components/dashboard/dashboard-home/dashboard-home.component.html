@@ -1,7 +1,7 @@
 <div class="main overflow-content">
     <mat-grid-list cols="3" rowHeight="250px" gutterSize="16" style="margin:16px">
         <mat-grid-tile *ngFor="let library of libraries">
-            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" class="nofocus">
+            <img src={{library.iLink}} alt="placeholder" routerLink="/dashboard/{{library.branch}}" layout-fill>
             <mat-grid-tile-footer>
                 <h3 mat-line>{{library.branch}}</h3>
                 <span mat-line>Branch</span>
