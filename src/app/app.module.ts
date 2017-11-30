@@ -17,6 +17,8 @@ import { LoginRedirect } from './services/login-redirect.service';
 
 import { AuthService } from './services/auth.service'
 import { GetInfoService } from './services/get-info.service'
+import { DeleteInfoService } from './services/delete-info.service';
+import { CreateInfoService } from './services/create-info.service';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import { GetInfoService } from './services/get-info.service'
     ],
     providers: [
         AuthService,
+        CreateInfoService,
+        DeleteInfoService,
         GetInfoService,
         LoginRedirect
     ],

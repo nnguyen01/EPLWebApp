@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
                     alert("Please Login Again")
                     localStorage.removeItem('token')
                     this.router.navigateByUrl('/login');
-                    console.log(err);
                 })
         }
     }
@@ -76,11 +75,6 @@ export class DashboardComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            this.library = result;
             console.log('The dialog was closed');
         });
     }

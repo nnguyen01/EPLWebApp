@@ -34,25 +34,21 @@ export class DashboardHomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.getInfo.getBranch()
-            .then((library => {
+            .then(library => {
                 if (library.status === 'success') {
                     this.libraries = library.data;
                 }
-            }
-            )
-            )
-            .catch((err => {
+            })
+            .catch(err => {
                 console.log(err);
-            }
-            )
-            )
+            })
     }
 
     openEditDialog(library: LibraryBranch): void {
         this.branchLink = false;
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
             width: '400px',
-            data: { 
+            data: {
                 branch: library.branch,
                 iLink: library.iLink
             }
@@ -60,7 +56,6 @@ export class DashboardHomeComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             this.branchLink = true;
-            console.log('The dialog was closed');
         });
     }
 
@@ -68,14 +63,19 @@ export class DashboardHomeComponent implements OnInit {
         this.branchLink = false;
         let dialogRef = this.dialog.open(DeleteBranchDialogComponent, {
             width: '250px',
-            data: { 
+            data: {
                 branch: library.branch
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
+            if (result == true) {
+                const index: number = this.libraries.indexOf(library);
+                if (index !== -1) {
+                    this.libraries.splice(index, 1);
+                }
+            }
             this.branchLink = true;
-            console.log('The dialog was closed');
         });
     }
 }
