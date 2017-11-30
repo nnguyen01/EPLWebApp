@@ -13,7 +13,7 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class EditBranchDialogComponent {
 
-    placeHolder: string;
+    flag: boolean = false;
     branch: FormControl;
 
     constructor(public dialogRef: MatDialogRef<any>,
@@ -23,12 +23,12 @@ export class EditBranchDialogComponent {
         iconRegistry
             .addSvgIcon('edit',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'));
-            this.branch = new FormControl('', [Validators.required, Validators.pattern(library.branch)])
+        this.branch = new FormControl(library.branch, [Validators.required, Validators.pattern(library.branch)])
     }
 
     getErrorMessage() {
-        return (this.branch.hasError('required') && this.branch.touched) ? 'You must enter a name' :
-        (this.branch.dirty && this.branch.touched) ? 'Editing a branch name edits its questions and zones' :
-            '';
-  }
+        return this.branch.hasError('required') ? 'You must enter a name' :
+            (this.branch.dirty && this.branch.touched) ? 'Editing a branch name edits its questions and zones' :
+                '';
+    }
 }
