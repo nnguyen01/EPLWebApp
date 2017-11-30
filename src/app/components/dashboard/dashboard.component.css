@@ -67,6 +67,12 @@ mat-sidenav {
     flex: 1 1 auto;
 }
 
+.container {
+    width: 10%;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
 .mat-toolbar-row {
     padding: 0 0;
 }
