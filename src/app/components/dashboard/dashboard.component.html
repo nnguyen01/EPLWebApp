@@ -1,8 +1,8 @@
 <mat-toolbar color="primary" class="app-toolbar mat-elevation-z2">
     <mat-toolbar-row class="mat-toolbar-row">
         <button class="hamburger mat-button" mat-button="" layout-align="start center" (click)="!sidenav.toggle()">
-            <mat-icon class="mat-icon-button" svgIcon="menu" aria-hidden="true">
-                <svg focusable="false" viewBox="0 0 24 24">
+            <mat-icon class="mat-icon-button" role="img" svgicon="menu" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
                 </svg>
             </mat-icon>
@@ -12,7 +12,7 @@
         </a>
         <span></span>
         <span class="spacer"></span>
-        <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary">
+        <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateDialog()">
             <mat-icon svgIcon="add">
             </mat-icon>
             NEW LIBRARY

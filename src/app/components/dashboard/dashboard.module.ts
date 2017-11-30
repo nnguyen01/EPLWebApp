@@ -15,6 +15,7 @@ import { CustomMaterialsModule } from '../../custom-materials.module';
 import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.component';
 import { EditBranchDialogComponent } from '../dialogs/edit-branch-dialog/edit-branch-dialog.component';
 import { DeleteBranchDialogComponent } from '../dialogs/delete-branch-dialog/delete-branch-dialog.component';
+import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/create-branch-dialog.component';
 
 @NgModule({
     declarations: [
@@ -23,8 +24,9 @@ import { DeleteBranchDialogComponent } from '../dialogs/delete-branch-dialog/del
         DashboardQuestionsComponent,
         DashboardAnalyticsComponent,
         DashboardZonesComponent,
-        EditBranchDialogComponent,
+        CreateBranchDialogComponent,
         DeleteBranchDialogComponent,
+        EditBranchDialogComponent
     ],
 
     imports: [
@@ -40,6 +42,7 @@ import { DeleteBranchDialogComponent } from '../dialogs/delete-branch-dialog/del
     ],
 
     entryComponents: [
+        CreateBranchDialogComponent,
         DeleteBranchDialogComponent,
         EditBranchDialogComponent
     ]

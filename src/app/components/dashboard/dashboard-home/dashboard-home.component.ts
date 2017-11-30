@@ -17,7 +17,7 @@ import { DeleteBranchDialogComponent } from '../../dialogs/delete-branch-dialog/
 })
 export class DashboardHomeComponent implements OnInit {
     libraries: LibraryBranch[] = [];
-    branchLink: boolean = true;
+    branchLink: boolean = true; // Used to dynamically set the routerLink
 
     constructor(
         private router: Router,

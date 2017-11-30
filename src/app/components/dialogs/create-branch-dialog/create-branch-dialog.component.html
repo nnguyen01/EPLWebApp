@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>
+    New Library
+</h1>
+<div mat-dialog-content>
+    <form>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" [(ngModel)]="library.branch" name="newBranch" [formControl]="branch" required>
+            <mat-error *ngIf="branch.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Image Link" [(ngModel)]="library.iLink" name="iLink">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="library" color="primary" tabindex="-1" [mat-dialog-close]="true">
+        <font>Create</font>
+    </button>
+    <button mat-raised-button tabindex="-1" [mat-dialog-close]="true">
+        <font>Cancel</font>
+    </button>
+</div>

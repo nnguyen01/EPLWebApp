@@ -13,11 +13,9 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class EditBranchDialogComponent {
 
-    flag: boolean = false;
     branch: FormControl;
 
-    constructor(public dialogRef: MatDialogRef<any>,
-        @Inject(MAT_DIALOG_DATA) public library: LibraryBranch,
+    constructor(@Inject(MAT_DIALOG_DATA) public library: LibraryBranch,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
         iconRegistry
@@ -28,7 +26,7 @@ export class EditBranchDialogComponent {
 
     getErrorMessage() {
         return this.branch.hasError('required') ? 'You must enter a name' :
-            (this.branch.dirty && this.branch.touched) ? 'Editing a branch name edits its questions and zones' :
+            this.branch.dirty ? 'Editing a branch name edits its questions and zones' :
                 '';
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 import { AuthService } from '../../services/auth.service';
 import { slideInDownAnimation } from '../../animations';
 
@@ -7,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
 import { MatRipple } from '@angular/material';
+import { LibraryBranch } from '../../models/library-branch';
+import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/create-branch-dialog.component';
 
 @Component({
     selector: 'app-dashboard',
@@ -15,10 +18,13 @@ import { MatRipple } from '@angular/material';
 })
 export class DashboardComponent implements OnInit {
     @ViewChild(MatRipple) ripple: MatRipple;
-    isLaunched: boolean = true;
+
+    library: LibraryBranch;
+
     constructor(
         private router: Router,
         private auth: AuthService,
+        public dialog: MatDialog,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
         iconRegistry
@@ -62,5 +68,20 @@ export class DashboardComponent implements OnInit {
         } else {
             this.router.navigateByUrl('/login');
         }
+    }
+
+    openCreateDialog(): void {
+        let dialogRef = this.dialog.open(CreateBranchDialogComponent, {
+            width: '400px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.library = result;
+            console.log('The dialog was closed');
+        });
     }
 }
