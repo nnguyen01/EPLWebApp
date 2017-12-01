@@ -15,7 +15,6 @@ import { EditInfoService } from '../../../services/edit-info.service';
 })
 export class EditZoneDialogComponent {
 
-    //branch: FormControl;
     zone: Zone;
     originalZone: Zone;
 
@@ -32,17 +31,8 @@ export class EditZoneDialogComponent {
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'));
 
         this.zone = JSON.parse(JSON.stringify(data.zone));
-        this.originalZone = JSON.parse(JSON.stringify(data.zone)); // Hacky method to not have the same reference
-        //this.branch = new FormControl(library.branch, [Validators.required, Validators.pattern(library.branch)])
+        this.originalZone = JSON.parse(JSON.stringify(data.zone));
     }
-
-    /*
-    getErrorMessage() {
-        return this.branch.hasError('required') ? 'You must enter a name' :
-            this.branch.dirty ? 'Editing a branch name edits its questions and zones' :
-                '';
-    }
-    */
 
     submit() {
         this.editInfo.editZone(this.zone.beaconID, this.originalZone.zone, this.zone.zone, this.originalZone.branch,

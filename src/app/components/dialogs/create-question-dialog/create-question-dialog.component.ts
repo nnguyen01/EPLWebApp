@@ -12,21 +12,13 @@ import { CreateInfoService } from '../../../services/create-info.service';
 export class CreateQuestionDialogComponent {
 
     question: Question = {};
-    //input: FormControl;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
         public dialogRef: MatDialogRef<CreateQuestionDialogComponent>,
         private createInfo: CreateInfoService) {
         this.question.branch = data.branch;
         this.question.zone = data.zone;
-        //this.input = new FormControl("", [Validators.required]);
     }
-
-    /*
-    getErrorMessage() {
-        return this.input.hasError('required') ? 'You must enter a name' : '';
-    }
-    */
 
     create(): void {
         this.question.zone = this.question.zone.replace(/\s/g, "_");

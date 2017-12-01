@@ -30,7 +30,6 @@ export class EditInfoService {
         newZone = newZone.replace(/\s/g, "_"); // Revert only for query
         oldZone = encodeURIComponent(oldZone.trim());
         newZone = encodeURIComponent(newZone.trim());
-        color = encodeURIComponent(color.trim());
         if (category == null) {
             category = "%20";
         } else {

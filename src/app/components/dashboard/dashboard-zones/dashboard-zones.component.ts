@@ -1,7 +1,11 @@
-import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component, OnInit, Input, HostBinding,
+    ChangeDetectionStrategy, ChangeDetectorRef,
+    ViewChild
+} from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry } from '@angular/material';
+import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry, MatPaginator } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { slideInDownAnimation } from '../../../animations';
 
@@ -27,6 +31,7 @@ export class DashboardZonesComponent implements OnInit {
     @HostBinding('@routeAnimation') routeAnimation = true;
     @HostBinding('style.display') display = 'block';
     @HostBinding('style.position') position = 'relative';
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     branchName: string;
     zones: Zone[] = [];
@@ -103,6 +108,7 @@ export class DashboardZonesComponent implements OnInit {
                         this.empty = false;
                         this.loaded = true;
                         this.dataSource = new MatTableDataSource<Question>(this.questions);
+                        this.dataSource.paginator = this.paginator;
                         this.changeDetect.markForCheck();
                     }
                 }

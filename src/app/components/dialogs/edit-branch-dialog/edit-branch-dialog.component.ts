@@ -38,8 +38,6 @@ export class EditBranchDialogComponent {
     }
 
     submit() {
-        console.log(this.oldLibrary);
-        console.log(this.library);
         this.editInfo.editBranch(this.oldLibrary.branch, this.library.branch, this.library.iLink)
             .then((result) => {
                 if (result.status === 'success') {

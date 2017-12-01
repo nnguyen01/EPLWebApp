@@ -15,6 +15,9 @@ export class DashboardQuestionsComponent {
     @HostBinding('style.display') display = 'block';
     @HostBinding('style.position') position = 'absolute';
 
+    loaded: boolean = false;
+    empty: boolean = false;
+
     constructor() { }
 
     ngOnInit() {

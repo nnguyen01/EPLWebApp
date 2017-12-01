@@ -97,4 +97,6 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditQuestionDialog(row)" (mouseenter)="highlight(row)"
             (mouseleave)="normallight(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}"></mat-row>
     </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
 </div>
