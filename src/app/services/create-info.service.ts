@@ -11,13 +11,14 @@ export class CreateInfoService {
     createBranch(branch: string, iLink?: string): Promise<any> {
         let urlParam: string;
         branch = encodeURIComponent(branch.trim());
-        if (iLink !== null) {
-            iLink = encodeURIComponent(iLink.trim());
-            urlParam = '/' + branch + '/' + iLink;
+        if (iLink == null) {
+            iLink = "%20"
         } else {
-            urlParam = '/' + branch
+            iLink = encodeURIComponent(iLink.trim());
         }
+        urlParam = '/' + branch + '/' + iLink;
         let url: string = `${this.BASE_URL}/createBranch` + urlParam;
+        console.log(url);
         return this.http.post(url, { headers: this.headers }).toPromise();
     };
 }

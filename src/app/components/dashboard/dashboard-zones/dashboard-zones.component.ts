@@ -46,7 +46,6 @@ export class DashboardZonesComponent implements OnInit {
         // TODO: Unsubscribe
         this.route.data
             .subscribe((data) => {
-                console.log("2");
                 this.zones = data.zone.data;
                 if (this.zones.length !== 0) {
                     for (let entry of this.zones) {
