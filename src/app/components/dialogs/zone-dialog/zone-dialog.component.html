@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>
+    <mat-icon svgIcon="edit"></mat-icon>
+</h1>
+<div mat-dialog-content>
+    <form>
+        <br>
+        <table style="width: 100%" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Zone" [(ngModel)]="zone.zone" name="zone.zone">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Category" [(ngModel)]="zone.category" name="zone.category">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <mat-form-field class="half-width">
+            <input matInput placeholder="Estimote Beacon ID" [(ngModel)]="zone.beaconID" name="zone.beaconID">
+        </mat-form-field>
+
+        <table style="width: 100%" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Branch" [(ngModel)]="zone.branch" name="zone.branch">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="full-width">
+                        <input matInput maxLength="7" placeholder="Color" [(ngModel)]="zone.color" name="zone.color">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" tabindex="-1" (click)="submit()">
+        <font>Confirm</font>
+    </button>
+    <button mat-raised-button tabindex="-1" (click)="cancel()">
+        <font>Cancel</font>
+    </button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="warn" tabindex="-1" (click)="delete()">
+        <font>Delete</font>
+    </button>
+</div>

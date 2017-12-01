@@ -29,7 +29,7 @@ export class EditQuestionDialogComponent {
             .addSvgIcon('delete',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'));
         this.question = JSON.parse(JSON.stringify(data.question));
-        this.originalQuestion = JSON.parse(JSON.stringify(data.question)); // Hacky method to not have the same refernce
+        this.originalQuestion = JSON.parse(JSON.stringify(data.question)); // Hacky method to not have the same reference
         this.input = new FormControl(this.question.Prompt,
             [
                 Validators.required,

@@ -27,6 +27,12 @@
     user-select: none;
 }
 
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .spacer {
     flex: 1 1 auto;
 }

@@ -8,18 +8,18 @@
                         <tr>
                             <td>
                                 <mat-form-field style="width: 100%">
-                                    <input matInput placeholder="Zone" [(ngModel)]="zone.zone" name="zone.zone">
+                                    <input matInput placeholder="Zone" value="{{zone.zone}}" disabled>
                                 </mat-form-field>
                             </td>
                             <td>
                                 <mat-form-field style="width: 100%">
-                                    <input matInput placeholder="Category" value="{{zone.category}}">
+                                    <input matInput placeholder="Category" value="{{zone.category}}" disabled>
                                 </mat-form-field>
                             </td>
                         </tr>
                     </table>
                     <mat-form-field class="half-width">
-                        <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}">
+                        <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}" disabled>
                     </mat-form-field>
 
                     <table style="width: 100%" cellspacing="0">
@@ -31,23 +31,28 @@
                             </td>
                             <td>
                                 <mat-form-field class="full-width">
-                                    <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}">
+                                    <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}" disabled>
                                 </mat-form-field>
                             </td>
                         </tr>
                     </table>
                 </form>
+                <button mat-raised-button color="primary" tabindex="-1">
+                    <font>Create</font>
+                </button>
+                <button mat-raised-button color="warn" tabindex="-1" (click)="openEditZoneDialog(zone)">
+                    <font>Edit</font>
+                </button>
             </mat-card-content>
         </mat-tab>
     </mat-tab-group>
-    <br>
 </mat-card>
 
 <mat-toolbar color="B39DDB">
     <mat-toolbar-row>
         <span>Questions: </span>
         <span class="spacer"></span>
-        <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateDialog()">
+        <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateQuestionDialog()">
             <mat-icon svgIcon="add">
             </mat-icon>
         </button>

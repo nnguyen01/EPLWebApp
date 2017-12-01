@@ -7,6 +7,7 @@ import { slideInDownAnimation } from '../../../animations';
 
 import { CreateQuestionDialogComponent } from '../../dialogs/create-question-dialog/create-question-dialog.component';
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
+import { ZoneDialogComponent } from '../../dialogs/zone-dialog/zone-dialog.component';
 
 import { GetInfoService } from '../../../services/get-info.service';
 import { EditInfoService } from '../../../services/edit-info.service';
@@ -113,6 +114,27 @@ export class DashboardZonesComponent implements OnInit {
             })
     }
 
+    openEditZoneDialog(zone: Zone): void {
+        console.log(zone);
+        let dialogRef = this.dialog.open(ZoneDialogComponent, {
+            width: '700px',
+            data: {
+                zone: zone
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && (result.delete === true)) {
+                let index = this.zones.findIndex(zone => zone.zone === result.old.zone);
+                if (index !== -1) {
+                    this.zones.splice(index, 1);
+                    this.changeDetect.markForCheck();
+                }
+            }
+            console.log('The dialog was closed');
+        });
+    }
+
     openEditQuestionDialog(question: Question): void {
         let dialogRef = this.dialog.open(EditQuestionDialogComponent, {
             width: '700px',
@@ -151,7 +173,7 @@ export class DashboardZonesComponent implements OnInit {
         })
     }
 
-    openCreateDialog(): void {
+    openCreateQuestionDialog(): void {
         let dialogRef = this.dialog.open(CreateQuestionDialogComponent, {
             width: '700px',
             data: {
