@@ -156,6 +156,10 @@ export class DashboardZonesComponent implements OnInit {
         });
     }
 
+    ngAfterContentInit() {
+        this.changeDetect.markForCheck();
+    }
+
     openCreateZoneDialog(): void {
         let dialogRef = this.dialog.open(CreateZoneDialogComponent, {
             width: '700px',
@@ -168,6 +172,8 @@ export class DashboardZonesComponent implements OnInit {
             this.zones.push(result);
             this.changeDetect.markForCheck();
         })
+        this.changeDetect.markForCheck();
+
     }
 
     openEditQuestionDialog(question: Question): void {
