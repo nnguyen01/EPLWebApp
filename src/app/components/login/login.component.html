@@ -6,7 +6,7 @@
 	<mat-card-content>
 		<form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
 				<mat-form-field class="full-width">
-					<input matInput id="email" placeholder="Email" required [(ngModel)]="user.email" name="email" #email="ngModel">
+					<input matInput id="email" type="email" placeholder="Email" required [(ngModel)]="user.email" name="email" #email="ngModel">
 					<!--<mat-error *ngIf="emailFormControl.hasError('email')">
 						Please enter a valid email address
 					</mat-error>-->
@@ -16,7 +16,7 @@
 				</mat-form-field>
 
 				<mat-form-field class="full-width">
-					<input matInput id="password" placeholder="Password" required [(ngModel)]="user.password" name="password" #password="ngModel">
+					<input matInput id="password" type="password" placeholder="Password" required [(ngModel)]="user.password" name="password" #password="ngModel">
 					<mat-error *ngIf="emailFormControl.hasError('required')">
 						Password is <strong>required</strong>
 					</mat-error>
