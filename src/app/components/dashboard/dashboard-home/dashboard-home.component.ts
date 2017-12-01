@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { GetInfoService } from '../../../services/get-info.service';
-
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
+
+import { DataService } from '../../../services/data.service';
+import { GetInfoService } from '../../../services/get-info.service';
 
 import { LibraryBranch } from '../../../models/library-branch';
 import { EditBranchDialogComponent } from '../../dialogs/edit-branch-dialog/edit-branch-dialog.component'
@@ -16,11 +17,14 @@ import { DeleteBranchDialogComponent } from '../../dialogs/delete-branch-dialog/
     styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
+
     libraries: LibraryBranch[] = [];
     branchLink: boolean = true; // Used to dynamically set the routerLink
+    subscription: Subscription;
 
     constructor(
         private router: Router,
+        public dataService: DataService,
         private getInfo: GetInfoService,
         public dialog: MatDialog,
         private iconRegistry: MatIconRegistry,
@@ -42,6 +46,16 @@ export class DashboardHomeComponent implements OnInit {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    ngAfterContentInit() {
+        this.subscription = this.dataService.dialogSource$.subscribe(
+            newLibrary => {
+                this.libraries.push(newLibrary);
+                // Sort libaries to alphabetical order
+                this.libraries.sort((a, b) => a.branch.localeCompare(b.branch));
+            }
+        )
     }
 
     openEditDialog(library: LibraryBranch): void {
@@ -77,5 +91,10 @@ export class DashboardHomeComponent implements OnInit {
             }
             this.branchLink = true;
         });
+    }
+
+    ngOnDestroy() {
+        // Prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
     }
 }

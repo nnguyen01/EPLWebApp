@@ -15,6 +15,7 @@ export class CreateBranchDialogComponent {
     library: LibraryBranch = {};
 
     constructor(
+        public dialogRef: MatDialogRef<CreateBranchDialogComponent>,
         private createInfo: CreateInfoService) {
         this.branch = new FormControl("", [Validators.required]);
     }
@@ -23,7 +24,7 @@ export class CreateBranchDialogComponent {
         return this.branch.hasError('required') ? 'You must enter a name' : '';
     }
 
-    create() {
+    create(): void {
         this.createInfo.createBranch(this.library.branch, this.library.iLink)
         .then(result => {
             if (result === 'success'){
@@ -33,5 +34,9 @@ export class CreateBranchDialogComponent {
         .catch(err => {
             console.log(err);
         })
+    }
+
+    cancel(): void {
+        this.dialogRef.close();
     }
 }

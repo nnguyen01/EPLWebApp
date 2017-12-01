@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 import { slideInDownAnimation } from '../../animations';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
         private router: Router,
         private auth: AuthService,
         public dialog: MatDialog,
+        private dataService: DataService,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
         iconRegistry
@@ -75,6 +77,10 @@ export class DashboardComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
+            // Use juggling check for null and defined instead of '!=='
+            if (result != null) {
+                this.dataService.submitBranch(result);
+            }
             console.log('The dialog was closed');
         });
     }
