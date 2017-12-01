@@ -7,6 +7,12 @@
     color: #263238;
 }
 
+.container {
+    width: 2px;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
 .main {
     position: relative;
     overflow-y: hidden; 
@@ -21,16 +27,22 @@
     user-select: none;
 }
 
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
 .basic-form {
     padding: 0;
 }
 
 .basic-form .mat-card-content {
     padding: 16px;
-}
-
-mat-input-container label {
-    color: red;
 }
 
 .half-width {
@@ -45,7 +57,38 @@ mat-input-container label {
     overflow: hidden;
     width: 100%;
 }
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 300px;
+    margin-bottom: 50px;
+}
   
-.demo-tab-content {
-    padding: 16px;
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+/* Column max widths */
+.cdk-column-Prompt {
+    max-width: 550px;
+    justify-content: flex-end;
+}
+  
+.cdk-column-Choices {
+    max-width: 400px;
+}
+  
+.cdk-column-Solution {
+    max-width: 200px;
+}
+  
+.cdk-column-Type {
+    max-width: 200px;
+}
+
+.highlight{
+    background: #ECEFF1; /* green */
 }
