@@ -43,7 +43,7 @@ export class DashboardZonesComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.branchName = params['branch'];
         })
-        // TODO: Unsubscribe
+
         this.route.data
             .subscribe((data) => {
                 this.zones = data.zone.data;
