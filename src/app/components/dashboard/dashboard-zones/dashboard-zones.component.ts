@@ -23,13 +23,15 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
-    loaded: boolean = false;
+    loaded: boolean = false; // Loads the questions once true
 
     selectedTab: number = 0;
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
         this.loaded = false;
         this.selectedTab = tabChangeEvent.index;
-        this.zoneDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        if (this.zones != null) {
+            this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        }
     }
 
     constructor(
@@ -41,35 +43,36 @@ export class DashboardZonesComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.branchName = params['branch'];
         })
-
         // TODO: Unsubscribe
         this.route.data
             .subscribe((data) => {
+                console.log("2");
                 this.zones = data.zone.data;
-                for (let entry of this.zones) {
-                    entry.zone = entry.zone.replace(/_/g, " ");
+                if (this.zones.length !== 0) {
+                    for (let entry of this.zones) {
+                        entry.zone = entry.zone.replace(/_/g, " ");
+                    }
                 }
             });
 
-        this.zoneDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        if (this.zones.length !== 0) {
+            console.log(this.zones);
+            this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        }
     }
 
-    zoneDisplay(branch: string, zone: string): void {
-        zone = zone.replace(/\s/g,"_");
+    questionDisplay(branch: string, zone: string): void {
+        zone = zone.replace(/\s/g, "_");
         this.getInfo.getQuestions(branch, zone)
-            .then((question => {
+            .then((question) => {
                 if (question.status === 'success') {
                     this.questions = question.data;
                     this.loaded = true;
                     this.changeDetect.markForCheck();
                 }
-            }
-            )
-            )
-            .catch((err => {
+            })
+            .catch((err) => {
                 console.log(err)
-            }
-            )
-            )
+            })
     }
 }

@@ -2,7 +2,7 @@
     Are you sure you want to delete the {{library.branch}} branch?
 </mat-dialog-content>
 <div mat-dialog-actions>
-    <button mat-raised-button tabindex="-1">
+    <button mat-raised-button tabindex="-1" [mat-dialog-close]="true">
         <font>No</font>
     </button>
     <button mat-raised-button tabindex="-1" color="warn" [mat-dialog-close]="true" (click)="delete()">
