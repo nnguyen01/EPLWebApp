@@ -4,20 +4,9 @@
 
 1. Install npm through node.js (https://nodejs.org/en/)
 2. `npm install -g @angular/cli`
-3. `git clone`
-4. cd into the directory
+3. `git clone https://github.com/nnguyen01/EPLWebApp.git`
+4. `cd EPLWebApp`
 5. `npm install`
-6. `ng serve --aot`
-
-# Updating from Angular 4 to Angular 5
-
-https://angular-update-guide.firebaseapp.com/
-
-1. `npm install @angular/animations@'^5.0.0' @angular/common@'^5.0.0' @angular/compiler@'^5.0.0' @angular/compiler-cli@'^5.0.0' @angular/core@'^5.0.0' @angular/forms@'^5.0.0' @angular/http@'^5.0.0' @angular/platform-browser@'^5.0.0' @angular/platform-browser-dynamic@'^5.0.0' @angular/platform-server@'^5.0.0' @angular/router@'^5.0.0' typescript@2.4.2 rxjs@'^5.5.2'`
-
-2. `npm install typescript@2.4.2 --save-exact`
-
-3. `ng serve --aot`
 
 # Development server
 
@@ -29,7 +18,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 # Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 # Running unit tests
 
