@@ -40,62 +40,7 @@
             </mat-card-content>
         </mat-tab>
     </mat-tab-group>
-
     <br>
-
-    <!-- <mat-accordion *ngIf="loaded">
-        <mat-expansion-panel *ngFor="let question of questions" class="unselectable" style="padding:8px">
-            <mat-expansion-panel-header>
-                <mat-panel-title class="panel-title-color">
-                    {{question.Prompt}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <form>
-                <br>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt">
-                </mat-form-field>
-                <mat-form-field *ngIf='question.qType === "multChoice"' class="full-width">
-                    <input matInput placeholder="Choices" value="{{question.Choices}}">
-                </mat-form-field>
-                <table style="width: 100%" cellspacing="0">
-                    <tr>
-                        <td>
-                            <mat-form-field class="half-width">
-                                <input matInput placeholder="Solution" value="{{question.Solution}}">
-                            </mat-form-field>
-                        </td>
-                        <td>
-                            <mat-form-field class="half-width">
-                                <mat-select placeholder="Question Type" [(value)]="question.qType">
-                                    <mat-option value="writInput">
-                                        Written Input
-                                    </mat-option>
-                                    <mat-option value="multChoice">
-                                        Multiple Choice
-                                    </mat-option>
-                                    <mat-option value="picInput">
-                                        Picture Input
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                </table>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Branch" value="{{question.branch}}">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Image Link" value="{{question.iLink}}">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Sound Link" value="{{question.sLink}}">
-                </mat-form-field>
-                <br>
-                <br>
-            </form>
-        </mat-expansion-panel>
-    </mat-accordion> -->
 </mat-card>
 
 <div class="table-container mat-elevation-z8" *ngIf="loaded">

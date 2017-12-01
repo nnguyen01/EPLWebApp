@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>
     <mat-icon svgIcon="edit"></mat-icon>
-    {{ (question.Prompt.length>35)? (question.Prompt | slice:0:80)+'...':(question.Prompt) }}
+    {{ (originalQuestion.Prompt.length>35)? (originalQuestion.Prompt | slice:0:50)+'...':(originalQuestion.Prompt) }}
 </h1>
 <div mat-dialog-content>
     <form>
@@ -9,13 +9,13 @@
             <input matInput tabindex="-1" placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt">
         </mat-form-field>
         <mat-form-field *ngIf='question.qType === "multChoice"' class="full-width">
-            <input matInput tabindex="-1" placeholder="Choices" value="{{question.Choices}}">
+            <input matInput tabindex="-1" placeholder="Choices" [(ngModel)]="question.Choices" name="question.Choices">
         </mat-form-field>
         <table style="width: 100%" cellspacing="0">
             <tr>
                 <td>
                     <mat-form-field class="half-width">
-                        <input tabindex="-1" matInput placeholder="Solution" value="{{question.Solution}}">
+                        <input tabindex="-1" matInput placeholder="Solution" [(ngModel)]="question.Solution" name="question.Solution">
                     </mat-form-field>
                 </td>
                 <td>
@@ -36,22 +36,19 @@
             </tr>
         </table>
         <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Branch" value="{{question.branch}}">
+            <input matInput tabindex="-1" placeholder="Branch" [(ngModel)]="question.branch" name="question.branch">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Image Link" value="{{question.iLink}}">
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Sound Link" value="{{question.sLink}}">
+            <input matInput tabindex="-1" placeholder="Image Link" [(ngModel)]="question.iLink" name="question.iLink">
         </mat-form-field>
         <br>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" tabindex="-1" [mat-dialog-close]="question">
+    <button mat-raised-button color="primary" tabindex="-1" (click)="submit()">
         <font>Confirm</font>
     </button>
-    <button mat-raised-button tabindex="-1" [mat-dialog-close]="true">
+    <button mat-raised-button tabindex="-1" (click)="cancel()">
         <font>Cancel</font>
     </button>
 </div>
