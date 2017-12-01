@@ -29,6 +29,10 @@
     padding: 16px;
 }
 
+mat-input-container label {
+    color: red;
+}
+
 .half-width {
     width: 50%;
 }
