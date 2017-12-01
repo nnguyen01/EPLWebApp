@@ -1,0 +1,28 @@
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.main {
+    position: relative;
+    overflow-y: hidden;
+
+	margin: 80px auto;
+	width: 540px;	
+}
+
+.header {
+    background-color: #263238;
+}
+
+.center {
+	text-align: center;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}

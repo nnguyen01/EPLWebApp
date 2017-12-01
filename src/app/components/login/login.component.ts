@@ -2,14 +2,21 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+//import { NgForm } from '@angular/forms/src/directives/ng_form';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
+	emailFormControl = new FormControl('', [
+		Validators.required,
+		Validators.email,
+	]);
+  
     // Without placeholder it gives html errors that don't break..
     user: User = {}; //= new User();
     constructor(private router: Router, private auth: AuthService) { }
