@@ -8,10 +8,9 @@ import { slideInDownAnimation } from '../../../animations';
 import { CreateZoneDialogComponent } from '../../dialogs/create-zone-dialog/create-zone-dialog.component'
 import { CreateQuestionDialogComponent } from '../../dialogs/create-question-dialog/create-question-dialog.component';
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
-import { ZoneDialogComponent } from '../../dialogs/zone-dialog/zone-dialog.component';
+import { EditZoneDialogComponent } from '../../dialogs/edit-zone-dialog/edit-zone-dialog.component';
 
 import { GetInfoService } from '../../../services/get-info.service';
-import { EditInfoService } from '../../../services/edit-info.service';
 
 import { Zone } from '../../../models/zone';
 import { Question } from '../../../models/question';
@@ -53,7 +52,6 @@ export class DashboardZonesComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private changeDetect: ChangeDetectorRef,
-        private editInfo: EditInfoService,
         private getInfo: GetInfoService,
         public dialog: MatDialog,
         private iconRegistry: MatIconRegistry,
@@ -118,7 +116,7 @@ export class DashboardZonesComponent implements OnInit {
     }
 
     openEditZoneDialog(zone: Zone): void {
-        let dialogRef = this.dialog.open(ZoneDialogComponent, {
+        let dialogRef = this.dialog.open(EditZoneDialogComponent, {
             width: '700px',
             data: {
                 zone: zone
@@ -135,20 +133,8 @@ export class DashboardZonesComponent implements OnInit {
             } else if (result && (result.update === true)) {
                 let index = this.zones.findIndex(zone => zone.zone === result.old.zone);
                 this.zones[index] = result.new;
-                let update = JSON.parse(JSON.stringify(result.new));
-                this.editInfo.editZone(update.beaconID, result.old.zone, update.zone, result.old.branch,
-                    update.branch, update.category, update.color)
-                    .then((result) => {
-                        if (result.status === 'success') {
-                            console.log("success");
-                            this.changeDetect.markForCheck();
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+                this.changeDetect.markForCheck();
             }
-            this.changeDetect.markForCheck();
         });
     }
 

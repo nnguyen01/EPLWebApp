@@ -18,7 +18,7 @@ import { DeleteBranchDialogComponent } from '../dialogs/delete-branch-dialog/del
 import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/create-branch-dialog.component';
 import { EditQuestionDialogComponent } from '../dialogs/edit-question-dialog/edit-question-dialog.component';
 import { CreateQuestionDialogComponent } from '../dialogs/create-question-dialog/create-question-dialog.component';
-import { ZoneDialogComponent } from '../dialogs/zone-dialog/zone-dialog.component';
+import { EditZoneDialogComponent } from '../dialogs/edit-zone-dialog/edit-zone-dialog.component';
 import { CreateZoneDialogComponent } from '../dialogs/create-zone-dialog/create-zone-dialog.component';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { CreateZoneDialogComponent } from '../dialogs/create-zone-dialog/create-
         EditBranchDialogComponent,
         EditQuestionDialogComponent,
         CreateQuestionDialogComponent,
-        ZoneDialogComponent,
+        EditZoneDialogComponent,
         CreateZoneDialogComponent
     ],
 
@@ -56,7 +56,7 @@ import { CreateZoneDialogComponent } from '../dialogs/create-zone-dialog/create-
         DeleteBranchDialogComponent,
         EditQuestionDialogComponent,
         EditBranchDialogComponent,
-        ZoneDialogComponent
+        EditZoneDialogComponent
     ]
 })
 
