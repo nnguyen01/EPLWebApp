@@ -28,6 +28,7 @@ export class ZoneDialogComponent {
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'))
             .addSvgIcon('delete',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'));
+            
         this.zone = JSON.parse(JSON.stringify(data.zone));
         this.originalZone = JSON.parse(JSON.stringify(data.zone)); // Hacky method to not have the same reference
         //this.branch = new FormControl(library.branch, [Validators.required, Validators.pattern(library.branch)])

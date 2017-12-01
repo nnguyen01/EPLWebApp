@@ -10,6 +10,34 @@ export class EditInfoService {
     private headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 
+    editBranch() {
+        
+    }
+
+    editZone(beaconID: string, oldZone: string,
+        newZone: string, oldBranch: string, newBranch: string,
+        category: string, color: string): Promise<any> {
+        oldZone = oldZone.replace(/\s/g, "_"); // Revert only for query
+        newZone = newZone.replace(/\s/g, "_"); // Revert only for query
+        oldZone = encodeURIComponent(oldZone.trim());
+        newZone = encodeURIComponent(newZone.trim());
+        color = encodeURIComponent(color.trim());
+        if (category == null) {
+            category = "%20";
+        } else {
+            category = encodeURIComponent(category.trim());
+        }
+        if (color == null) {
+            color = "%20";
+        } else {
+            color = encodeURIComponent(color.trim());
+        }
+        let urlParam = '/' + beaconID + '/' + oldZone + '/' + newZone
+            + '/' + oldBranch + '/' + newBranch + '/' + category + '/' + color;
+        let url: string = `${this.BASE_URL}/updateZone` + urlParam;
+        return this.http.post(url, { headers: this.headers }).toPromise();
+    }
+
     editQuestion(question: Question): Promise<any> {
         if (question.Choices != null || question.Choices != "") {
             question.Choices = question.Choices.replace(/\,/g, "|_|");

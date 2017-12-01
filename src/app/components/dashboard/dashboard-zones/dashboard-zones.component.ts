@@ -5,6 +5,7 @@ import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry } fro
 import { DomSanitizer } from '@angular/platform-browser';
 import { slideInDownAnimation } from '../../../animations';
 
+import { CreateZoneDialogComponent } from '../../dialogs/create-zone-dialog/create-zone-dialog.component'
 import { CreateQuestionDialogComponent } from '../../dialogs/create-question-dialog/create-question-dialog.component';
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
 import { ZoneDialogComponent } from '../../dialogs/zone-dialog/zone-dialog.component';
@@ -31,6 +32,7 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
+    emptyZones: boolean = true;
     empty: boolean = false; // Shows empty message
     loaded: boolean = false; // Loads the questions once true
     selectedRowIndex: number = -1;
@@ -43,7 +45,11 @@ export class DashboardZonesComponent implements OnInit {
         this.loaded = false;
         this.selectedTab = tabChangeEvent.index;
         if (this.zones != null) {
+            this.emptyZones = true;
             this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        } else {
+            this.emptyZones = false;
+            this.changeDetect.markForCheck();
         }
     }
 
@@ -130,9 +136,38 @@ export class DashboardZonesComponent implements OnInit {
                     this.zones.splice(index, 1);
                     this.changeDetect.markForCheck();
                 }
+            } else if (result && (result.update === true)) {
+                let index = this.zones.findIndex(zone => zone.zone === result.old.zone);
+                this.questions[index] = result.new; // Replaces object
+                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
+                this.editInfo.editZone(update.beaconID, result.old.zone, update.zone, result.old.branch,
+                    update.branch, update.category, update.color)
+                    .then((result) => {
+                        if (result.status === 'success') {
+                            console.log("success");
+                            this.changeDetect.markForCheck();
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
             }
-            console.log('The dialog was closed');
+            this.changeDetect.markForCheck();
         });
+    }
+
+    openCreateZoneDialog(): void {
+        let dialogRef = this.dialog.open(CreateZoneDialogComponent, {
+            width: '700px',
+            data: {
+                data: this.branchName,
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.zones.push(result);
+            this.changeDetect.markForCheck();
+        })
     }
 
     openEditQuestionDialog(question: Question): void {

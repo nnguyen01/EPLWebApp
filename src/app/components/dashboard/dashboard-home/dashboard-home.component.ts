@@ -10,6 +10,8 @@ import { GetInfoService } from '../../../services/get-info.service';
 import { LibraryBranch } from '../../../models/library-branch';
 import { EditBranchDialogComponent } from '../../dialogs/edit-branch-dialog/edit-branch-dialog.component'
 import { DeleteBranchDialogComponent } from '../../dialogs/delete-branch-dialog/delete-branch-dialog.component';
+import { ChangeDetectorRef } from '@angular/core/src/change_detection/change_detector_ref';
+import { EditInfoService } from '../../../services/edit-info.service';
 
 @Component({
     selector: 'app-dashboard-home',
@@ -26,6 +28,7 @@ export class DashboardHomeComponent implements OnInit {
         private router: Router,
         public dataService: DataService,
         private getInfo: GetInfoService,
+        private editInfo: EditInfoService,
         public dialog: MatDialog,
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
@@ -63,13 +66,29 @@ export class DashboardHomeComponent implements OnInit {
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
             width: '400px',
             data: {
-                branch: library.branch,
-                iLink: library.iLink
+                data: library
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             this.branchLink = true;
+            /*
+            if (result && (result.update === true)) {
+                let index = this.libraries.findIndex(zone => zone.zone === result.old.zone);
+                this.libraries[index] = result.new; // Replaces object
+                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
+                this.editInfo.editBranch(update.beaconID, result.old.zone, )
+                    .then((result) => {
+                        if (result.status === 'success') {
+                            console.log("success");
+                            this.changeDetect.markForCheck();
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            }
+            */
         });
     }
 
