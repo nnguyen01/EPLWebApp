@@ -16,6 +16,7 @@ import { DashboardZonesComponent } from './dashboard-zones/dashboard-zones.compo
 import { EditBranchDialogComponent } from '../dialogs/edit-branch-dialog/edit-branch-dialog.component';
 import { DeleteBranchDialogComponent } from '../dialogs/delete-branch-dialog/delete-branch-dialog.component';
 import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/create-branch-dialog.component';
+import { EditQuestionDialogComponent } from '../dialogs/edit-question-dialog/edit-question-dialog.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/cre
         DashboardZonesComponent,
         CreateBranchDialogComponent,
         DeleteBranchDialogComponent,
-        EditBranchDialogComponent
+        EditBranchDialogComponent,
+        EditQuestionDialogComponent
     ],
 
     imports: [
@@ -44,6 +46,7 @@ import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/cre
     entryComponents: [
         CreateBranchDialogComponent,
         DeleteBranchDialogComponent,
+        EditQuestionDialogComponent,
         EditBranchDialogComponent
     ]
 })

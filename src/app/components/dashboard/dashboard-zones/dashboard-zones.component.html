@@ -43,7 +43,7 @@
 
     <br>
 
-    <mat-accordion *ngIf="loaded">
+    <!-- <mat-accordion *ngIf="loaded">
         <mat-expansion-panel *ngFor="let question of questions" class="unselectable" style="padding:8px">
             <mat-expansion-panel-header>
                 <mat-panel-title class="panel-title-color">
@@ -95,5 +95,41 @@
                 <br>
             </form>
         </mat-expansion-panel>
-    </mat-accordion>
+    </mat-accordion> -->
 </mat-card>
+
+<div class="table-container mat-elevation-z8" *ngIf="loaded">
+    <mat-table #table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="Prompt">
+            <mat-header-cell *matHeaderCellDef> Prompt </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable">
+                {{ (question.Prompt.length>35)? (question.Prompt | slice:0:60)+'...':(question.Prompt) }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Choices">
+            <mat-header-cell *matHeaderCellDef> Choices </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable"> {{question.Choices}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Solution">
+            <mat-header-cell *matHeaderCellDef> Solution </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable"> {{question.Solution}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Type">
+            <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable">
+                {{ 
+                (question.qType==='writInput') ? 'Written Input' :
+                (question.qType==='multChoice') ? 'Multiple Choice' :
+                (question.qType==='picInput') ? 'Picture Input': ''  }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditQuestionDialog(row)" (mouseenter)="highlight(row)"
+            (mouseleave)="normallight(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}"></mat-row>
+    </mat-table>
+</div>

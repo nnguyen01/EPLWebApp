@@ -16,6 +16,7 @@ import {
     MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule
@@ -39,6 +40,7 @@ import {
         MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
+        MatTableModule,
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule
@@ -59,6 +61,7 @@ import {
         MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
+        MatTableModule,
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule
