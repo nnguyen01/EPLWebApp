@@ -169,8 +169,10 @@ export class DashboardZonesComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.zones.push(result);
-            this.changeDetect.markForCheck();
+            if (result) {
+                this.zones.push(result);
+                this.changeDetect.markForCheck();
+            }
         })
         this.changeDetect.markForCheck();
 

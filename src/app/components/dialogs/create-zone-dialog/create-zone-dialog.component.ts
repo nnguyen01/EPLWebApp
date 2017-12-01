@@ -42,6 +42,6 @@ export class CreateZoneDialogComponent {
     }
 
     cancel(): void {
-        this.dialogRef.close();
+        this.dialogRef.close({data: false});
     }
 }

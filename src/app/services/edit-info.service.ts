@@ -42,6 +42,9 @@ export class EditInfoService {
         if (question.Choices != null || question.Choices != "") {
             question.Choices = question.Choices.replace(/\,/g, "|_|");
         }
+        if (question.zone != null) {
+            question.zone = question.zone.replace(/\s/g, "_");
+        }
         for (const property in question) {
             if (question[property] == null || question[property] == "") {
                 question[property] = "%20";
