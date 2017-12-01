@@ -8,18 +8,18 @@
                         <tr>
                             <td>
                                 <mat-form-field style="width: 100%">
-                                    <input matInput placeholder="Zone" [(ngModel)]="zone.zone" name="zone.zone">
+                                    <input matInput placeholder="Zone" value="{{zone.zone}}" disabled>
                                 </mat-form-field>
                             </td>
                             <td>
                                 <mat-form-field style="width: 100%">
-                                    <input matInput placeholder="Category" value="{{zone.category}}">
+                                    <input matInput placeholder="Category" value="{{zone.category}}" disabled>
                                 </mat-form-field>
                             </td>
                         </tr>
                     </table>
                     <mat-form-field class="half-width">
-                        <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}">
+                        <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}" disabled>
                     </mat-form-field>
 
                     <table style="width: 100%" cellspacing="0">
@@ -31,73 +31,67 @@
                             </td>
                             <td>
                                 <mat-form-field class="full-width">
-                                    <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}">
+                                    <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}" disabled>
                                 </mat-form-field>
                             </td>
                         </tr>
                     </table>
                 </form>
+                <button mat-raised-button color="primary" tabindex="-1" (click)="openCreateZoneDialog()">
+                    <font>Create</font>
+                </button>
+                <button mat-raised-button color="warn" tabindex="-1" (click)="openEditZoneDialog(zone)">
+                    <font>Edit</font>
+                </button>
             </mat-card-content>
         </mat-tab>
     </mat-tab-group>
-
-    <br>
-
-    <mat-accordion *ngIf="loaded">
-        <mat-expansion-panel *ngFor="let question of questions" class="unselectable" style="padding:8px">
-            <mat-expansion-panel-header>
-                <mat-panel-title class="panel-title-color">
-                    {{question.Prompt}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <form>
-                <br>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt">
-                </mat-form-field>
-                <mat-form-field *ngIf='question.qType === "multChoice"' class="full-width">
-                    <input matInput placeholder="Choices" value="{{question.Choices}}">
-                </mat-form-field>
-                <table style="width: 100%" cellspacing="0">
-                    <tr>
-                        <td>
-                            <mat-form-field class="half-width">
-                                <input matInput placeholder="Solution" value="{{question.Solution}}">
-                            </mat-form-field>
-                        </td>
-                        <td>
-                            <mat-form-field class="half-width">
-                                <mat-select placeholder="Question Type" [(value)]="question.qType">
-                                    <mat-option value="writInput">
-                                        Written Input
-                                    </mat-option>
-                                    <mat-option value="multChoice">
-                                        Multiple Choice
-                                    </mat-option>
-                                    <mat-option value="picInput">
-                                        Picture Input
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                </table>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Branch" value="{{question.branch}}">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Image Link" value="{{question.iLink}}">
-                </mat-form-field>
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Sound Link" value="{{question.sLink}}">
-                </mat-form-field>
-                <br>
-                <br>
-				<mat-card-actions>
-					<button mat-raised-button color="primary">Update</button>
-					<button mat-raised-button color="warn">Delete</button>
-				</mat-card-actions>
-            </form>
-        </mat-expansion-panel>
-    </mat-accordion>
 </mat-card>
+
+<mat-toolbar color="B39DDB">
+    <mat-toolbar-row>
+        <span>Questions: </span>
+        <span class="spacer"></span>
+        <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateQuestionDialog()">
+            <mat-icon svgIcon="add">
+            </mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="!loaded && !empty"></mat-progress-bar>
+<mat-progress-bar mode="buffer" *ngIf="empty"></mat-progress-bar>
+<mat-card *ngIf="empty" class="main">
+    <div layout-align>No Questions Available</div>
+</mat-card>
+<div class="table-container mat-elevation-z8" *ngIf="loaded">
+    <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="Prompt">
+            <mat-header-cell *matHeaderCellDef> Prompt </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable">
+                {{ (question.Prompt.length>35)? (question.Prompt | slice:0:60)+'...':(question.Prompt) }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Choices">
+            <mat-header-cell *matHeaderCellDef> Choices </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable"> {{question.Choices}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Solution">
+            <mat-header-cell *matHeaderCellDef> Solution </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable"> {{question.Solution}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Type">
+            <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+            <mat-cell *matCellDef="let question" class="unselectable">
+                {{ (question.qType==='writInput') ? 'Written Input' : (question.qType==='multChoice') ? 'Multiple Choice' : (question.qType==='picInput')
+                ? 'Picture Input': '' }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditQuestionDialog(row)" (mouseenter)="highlight(row)"
+            (mouseleave)="normallight(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}"></mat-row>
+    </mat-table>
+</div>

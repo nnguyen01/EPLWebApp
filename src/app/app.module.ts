@@ -16,10 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginRedirect } from './services/login-redirect.service';
 
 import { AuthService } from './services/auth.service'
-import { GetInfoService } from './services/get-info.service'
+import { CreateInfoService } from './services/create-info.service';
 import { DataService } from './services/data.service';
 import { DeleteInfoService } from './services/delete-info.service';
-import { CreateInfoService } from './services/create-info.service';
+import { EditInfoService } from './services/edit-info.service';
+import { GetInfoService } from './services/get-info.service'
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { CreateInfoService } from './services/create-info.service';
         CreateInfoService,
         DataService,
         DeleteInfoService,
+        EditInfoService,
         GetInfoService,
         LoginRedirect
     ],

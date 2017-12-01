@@ -14,4 +14,17 @@ export class DeleteInfoService {
         let url: string = `${this.BASE_URL}/deleteBranch` + urlParam;
         return this.http.delete(url, { headers: this.headers }).toPromise();
     };
+
+    deleteZone(branch: string, zone: string): Promise<any> {
+        zone = zone.replace(/\s/g, "_");
+        let urlParam = '/' + branch + '/' + zone
+        let url: string = `${this.BASE_URL}/deleteZone` + urlParam;
+        return this.http.delete(url, { headers: this.headers }).toPromise();
+    }
+
+    deleteQuestion(id: number): Promise<any> {
+        let urlParam = '/' + String(id)
+        let url: string = `${this.BASE_URL}/deleteQuestion` + urlParam;
+        return this.http.delete(url, { headers: this.headers }).toPromise();
+    }
 }

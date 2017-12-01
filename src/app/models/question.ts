@@ -1,7 +1,7 @@
 export interface Question {
-    prompt?: string,
-    choices?: string,
-    solution?: string,
+    Prompt?: string,
+    Choices?: string,
+    Solution?: string,
     zone?: string,
     branch?: string,
     qType?: string,

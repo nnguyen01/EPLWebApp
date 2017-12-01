@@ -16,7 +16,6 @@ export class DataService {
 
     // Service message commands
     submitBranch(data: LibraryBranch) {
-        console.log(data);
         this.dialogSource.next(data);
     }
 }

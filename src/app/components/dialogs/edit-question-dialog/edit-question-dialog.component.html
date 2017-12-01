@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>
+    <mat-icon svgIcon="edit"></mat-icon>
+    {{ (originalQuestion.Prompt.length>35)? (originalQuestion.Prompt | slice:0:50)+'...':(originalQuestion.Prompt) }}
+</h1>
+<div mat-dialog-content>
+    <form>
+        <br>
+        <mat-form-field class="full-width">
+            <input matInput tabindex="-1" placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt">
+        </mat-form-field>
+        <mat-form-field *ngIf='question.qType === "multChoice"' class="full-width">
+            <input matInput tabindex="-1" placeholder="Choices" [(ngModel)]="question.Choices" name="question.Choices">
+        </mat-form-field>
+        <table style="width: 100%" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="half-width">
+                        <input tabindex="-1" matInput placeholder="Solution" [(ngModel)]="question.Solution" name="question.Solution">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="half-width">
+                        <mat-select tabindex="-1" placeholder="Question Type" [(value)]="question.qType">
+                            <mat-option value="writInput">
+                                Written Input
+                            </mat-option>
+                            <mat-option value="multChoice">
+                                Multiple Choice
+                            </mat-option>
+                            <mat-option value="picInput">
+                                Picture Input
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <mat-form-field class="full-width">
+            <input matInput tabindex="-1" placeholder="Branch" [(ngModel)]="question.branch" name="question.branch">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput tabindex="-1" placeholder="Zone" [(ngModel)]="question.zone" name="question.zone">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput tabindex="-1" placeholder="Image Link" [(ngModel)]="question.iLink" name="question.iLink">
+        </mat-form-field>
+        <br>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" tabindex="-1" (click)="submit()">
+        <font>Confirm</font>
+    </button>
+    <button mat-raised-button tabindex="-1" (click)="cancel()">
+        <font>Cancel</font>
+    </button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="warn" tabindex="-1" (click)="delete()">
+        <font>Delete</font>
+    </button>
+</div>
