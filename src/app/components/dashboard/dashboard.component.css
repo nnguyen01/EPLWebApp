@@ -1,12 +1,3 @@
-/* Literally don't know why this works
-** https://stackoverflow.com/questions/46666381/unable-to-set-the-height-of-a-angular-material-sidenav-to-100
-*/
-
-/*
-::ng-deep .mat-sidenav-container{
-    height:100vh !important;
-} */
-
 .app-toolbar {
     position: sticky;
     position: -webkit-sticky; 
@@ -23,6 +14,10 @@
     position: absolute;
     width: 100%;
     bottom: 70px;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
   
 mat-sidenav {
@@ -61,10 +56,6 @@ mat-sidenav {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-.spacer {
-    flex: 1 1 auto;
 }
 
 .container {

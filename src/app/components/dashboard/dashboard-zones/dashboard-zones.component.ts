@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatTabChangeEvent, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { slideInDownAnimation } from '../../../animations';
 
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
@@ -48,7 +49,13 @@ export class DashboardZonesComponent implements OnInit {
         private changeDetect: ChangeDetectorRef,
         private editInfo: EditInfoService,
         private getInfo: GetInfoService,
-        public dialog: MatDialog) { }
+        public dialog: MatDialog,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer) {
+        iconRegistry
+            .addSvgIcon('add',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/add.svg'));
+    }
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
