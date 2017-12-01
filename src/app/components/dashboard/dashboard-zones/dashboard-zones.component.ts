@@ -32,7 +32,6 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
-    emptyZones: boolean = true;
     empty: boolean = false; // Shows empty message
     loaded: boolean = false; // Loads the questions once true
     selectedRowIndex: number = -1;
@@ -45,10 +44,8 @@ export class DashboardZonesComponent implements OnInit {
         this.loaded = false;
         this.selectedTab = tabChangeEvent.index;
         if (this.zones != null) {
-            this.emptyZones = true;
             this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
         } else {
-            this.emptyZones = false;
             this.changeDetect.markForCheck();
         }
     }
@@ -121,7 +118,6 @@ export class DashboardZonesComponent implements OnInit {
     }
 
     openEditZoneDialog(zone: Zone): void {
-        console.log(zone);
         let dialogRef = this.dialog.open(ZoneDialogComponent, {
             width: '700px',
             data: {
@@ -138,8 +134,8 @@ export class DashboardZonesComponent implements OnInit {
                 }
             } else if (result && (result.update === true)) {
                 let index = this.zones.findIndex(zone => zone.zone === result.old.zone);
-                this.questions[index] = result.new; // Replaces object
-                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
+                this.zones[index] = result.new;
+                let update = JSON.parse(JSON.stringify(result.new));
                 this.editInfo.editZone(update.beaconID, result.old.zone, update.zone, result.old.branch,
                     update.branch, update.category, update.color)
                     .then((result) => {
@@ -195,23 +191,12 @@ export class DashboardZonesComponent implements OnInit {
                 }
             } else if (result && (result.update === true)) {
                 let index = this.questions.findIndex(question => question.id === result.old.id);
-                this.questions[index] = result.new; // Replaces object
+                this.questions[index] = result.new;
                 if (this.questions.length === 0) {
                     this.empty = true;
-                    this.changeDetect.markForCheck();
                 } else {
                     this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
                 }
-                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
-                this.editInfo.editQuestion(update)
-                    .then((result) => {
-                        if (result.status === 'success') {
-                            console.log("success");
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
             }
         })
     }

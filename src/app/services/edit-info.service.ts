@@ -10,8 +10,17 @@ export class EditInfoService {
     private headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 
-    editBranch() {
-        
+    editBranch(oldBranch: string, newBranch: string, iLink: string): Promise<any> {
+        oldBranch = encodeURIComponent(oldBranch.trim());
+        newBranch = encodeURIComponent(newBranch.trim());
+        if (iLink == null) {
+            iLink = "%20"
+        } else {
+            iLink = encodeURIComponent(iLink.trim());
+        }
+        let urlParam = '/' + oldBranch + '/' + newBranch + '/' + iLink;
+        let url: string = `${this.BASE_URL}/updateBranch` + urlParam;
+        return this.http.post(url, { headers: this.headers }).toPromise();
     }
 
     editZone(beaconID: string, oldZone: string,
