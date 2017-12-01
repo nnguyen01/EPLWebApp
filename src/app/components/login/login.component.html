@@ -1,26 +1,33 @@
-<div class="row">
-    <div class="col-md-4">
-        <h1>Login</h1>
-        <hr>
-        <br>
-        <form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="enter email" required [(ngModel)]="user.email" name="email"
-                    #email="ngModel">
-                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                    Email is required
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="enter password" required [(ngModel)]="user.password"
-                    name="password" #password="ngModel">
-                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                    Password is required
-                </div>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+<mat-card class="main">
+	<mat-card-header>
+		<img mat-card-image src="assets/EPL_Logo.png">
+	</mat-card-header>	
+	
+	<mat-card-content>
+		<form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
+				<mat-form-field class="full-width">
+					<input matInput id="email" type="email" placeholder="Email" required [(ngModel)]="user.email" name="email" #email="ngModel">
+					<!--<mat-error *ngIf="emailFormControl.hasError('email')">
+						Please enter a valid email address
+					</mat-error>-->
+					<mat-error *ngIf="emailFormControl.hasError('required')">
+						Email is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="full-width">
+					<input matInput id="password" type="password" placeholder="Password" required [(ngModel)]="user.password" name="password" #password="ngModel">
+					<mat-error *ngIf="emailFormControl.hasError('required')">
+						Password is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
+
+				<mat-card-actions>
+					<div class="center">
+						<button mat-raised-button color="primary" type="submit" class="btn btn-default">Login</button>
+					</div>
+				</mat-card-actions>
+
         </form>
-    </div>
-</div>
+  </mat-card-content>
+</mat-card>
