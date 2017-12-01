@@ -1,7 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 import { slideInDownAnimation } from '../../animations';
+
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
+import { MatRipple } from '@angular/material';
+import { LibraryBranch } from '../../models/library-branch';
+import { CreateBranchDialogComponent } from '../dialogs/create-branch-dialog/create-branch-dialog.component';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,10 +18,23 @@ import { slideInDownAnimation } from '../../animations';
     styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-    isLaunched: boolean = true;
+    @ViewChild(MatRipple) ripple: MatRipple;
+
+    library: LibraryBranch;
+
     constructor(
         private router: Router,
-        private auth: AuthService) { }
+        private auth: AuthService,
+        public dialog: MatDialog,
+        private dataService: DataService,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer) {
+        iconRegistry
+            .addSvgIcon('menu',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/menu.svg'))
+            .addSvgIcon('add',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/add.svg'));
+    }
 
     ngOnInit(): void {
         const token = localStorage.getItem('token');
@@ -28,7 +50,6 @@ export class DashboardComponent implements OnInit {
                     alert("Please Login Again")
                     localStorage.removeItem('token')
                     this.router.navigateByUrl('/login');
-                    console.log(err);
                 })
         }
     }
@@ -48,5 +69,19 @@ export class DashboardComponent implements OnInit {
         } else {
             this.router.navigateByUrl('/login');
         }
+    }
+
+    openCreateDialog(): void {
+        let dialogRef = this.dialog.open(CreateBranchDialogComponent, {
+            width: '400px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            // Use juggling check for null and defined instead of '!=='
+            if (result != null) {
+                this.dataService.submitBranch(result);
+            }
+            console.log('The dialog was closed');
+        });
     }
 }

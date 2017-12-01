@@ -1,5 +1,5 @@
 <mat-card class="main">
-    <mat-tab-group #tabGroup class="tab-group" (selectedTabChange)="tabChanged($event)">
+    <mat-tab-group #tabGroup class="tab-group" (selectedTabChange)="tabChanged($event)" *ngIf="zones.length !== 0">
         <mat-tab *ngFor="let zone of zones" label="{{zone.zone}}">
             <mat-card-content>
                 <form>
