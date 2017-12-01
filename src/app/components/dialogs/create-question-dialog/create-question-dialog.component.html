@@ -1,6 +1,5 @@
 <h1 mat-dialog-title>
-    <mat-icon svgIcon="edit"></mat-icon>
-    {{ (originalQuestion.Prompt.length>35)? (originalQuestion.Prompt | slice:0:50)+'...':(originalQuestion.Prompt) }}
+    New Question
 </h1>
 <div mat-dialog-content>
     <form>
@@ -36,10 +35,10 @@
             </tr>
         </table>
         <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Branch" [(ngModel)]="question.branch" name="question.branch">
+            <input matInput tabindex="-1" placeholder="Branch" [(ngModel)]="question.branch" name="question.branch" disabled>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Zone" [(ngModel)]="question.zone" name="question.zone">
+            <input matInput tabindex="-1" placeholder="Zone" [(ngModel)]="question.zone" name="question.zone" disabled>
         </mat-form-field>
         <mat-form-field class="full-width">
             <input matInput tabindex="-1" placeholder="Image Link" [(ngModel)]="question.iLink" name="question.iLink">
@@ -48,14 +47,10 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" tabindex="-1" (click)="submit()">
+    <button mat-raised-button [mat-dialog-close]="question" color="primary" tabindex="-1" (click)="create()">
         <font>Confirm</font>
     </button>
     <button mat-raised-button tabindex="-1" (click)="cancel()">
         <font>Cancel</font>
-    </button>
-    <span class="spacer"></span>
-    <button mat-raised-button color="warn" tabindex="-1" (click)="delete()">
-        <font>Delete</font>
     </button>
 </div>

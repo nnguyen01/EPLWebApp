@@ -15,7 +15,6 @@ export class DeleteBranchDialogComponent {
     }
 
     delete() {
-        console.log(this.library.branch);
         this.deleteInfo.deleteBranch(this.library.branch)
         .then(result => {
             if (result.status === 'success') {

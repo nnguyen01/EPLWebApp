@@ -53,7 +53,11 @@
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
-<mat-progress-bar mode="indeterminate" *ngIf="!loaded" color="#B39DDB"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="!loaded && !empty"></mat-progress-bar>
+<mat-progress-bar mode="buffer" *ngIf="empty"></mat-progress-bar>
+<mat-card *ngIf="empty" class="main">
+    <div layout-align>No Questions Available</div>
+</mat-card>
 <div class="table-container mat-elevation-z8" *ngIf="loaded">
     <mat-table #table [dataSource]="dataSource">
 

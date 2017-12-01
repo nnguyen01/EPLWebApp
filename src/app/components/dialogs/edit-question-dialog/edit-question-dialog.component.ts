@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry } from '@angular/material';
-
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { LibraryBranch } from '../../../models/library-branch';
+import { DeleteInfoService } from '../../../services/delete-info.service';
+
 import { Question } from '../../../models/question';
 
 @Component({
@@ -21,13 +21,16 @@ export class EditQuestionDialogComponent {
     constructor( @Inject(MAT_DIALOG_DATA) public data: any,
         private iconRegistry: MatIconRegistry,
         private dialogRef: MatDialogRef<EditQuestionDialogComponent>,
+        private deleteInfo: DeleteInfoService,
         private sanitizer: DomSanitizer) {
         iconRegistry
             .addSvgIcon('edit',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'));
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'))
+            .addSvgIcon('delete',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'));
         this.question = JSON.parse(JSON.stringify(data.question));
         this.originalQuestion = JSON.parse(JSON.stringify(data.question)); // Hacky method to not have the same refernce
-        this.input = new FormControl(this.question.Prompt, 
+        this.input = new FormControl(this.question.Prompt,
             [
                 Validators.required,
                 Validators.pattern(this.question.Prompt)
@@ -52,5 +55,18 @@ export class EditQuestionDialogComponent {
 
     cancel() {
         this.dialogRef.close({ update: false });
+    }
+
+    delete() {
+        this.deleteInfo.deleteQuestion(this.question.id)
+            .then(result => {
+                if (result.status === 'success') {
+                    console.log(result);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        this.dialogRef.close({ delete: true, old: this.originalQuestion});
     }
 }

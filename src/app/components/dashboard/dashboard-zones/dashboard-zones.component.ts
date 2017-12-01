@@ -5,6 +5,7 @@ import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry } fro
 import { DomSanitizer } from '@angular/platform-browser';
 import { slideInDownAnimation } from '../../../animations';
 
+import { CreateQuestionDialogComponent } from '../../dialogs/create-question-dialog/create-question-dialog.component';
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
 
 import { GetInfoService } from '../../../services/get-info.service';
@@ -29,6 +30,7 @@ export class DashboardZonesComponent implements OnInit {
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
+    empty: boolean = false; // Shows empty message
     loaded: boolean = false; // Loads the questions once true
     selectedRowIndex: number = -1;
 
@@ -77,23 +79,36 @@ export class DashboardZonesComponent implements OnInit {
         }
     }
 
+    highlight(row) {
+        this.selectedRowIndex = row.id;
+    }
+
+    normallight(row) {
+        this.selectedRowIndex = -1;
+    }
+
     questionDisplay(branch: string, zone: string): void {
-        zone = zone.replace(/\s/g, "_");
+        zone = zone.replace(/\s/g, "_"); // Revert only for query
         this.getInfo.getQuestions(branch, zone)
             .then((question) => {
                 if (question.status === 'success') {
                     this.questions = question.data;
-                    console.log(this.questions);
                     for (let entry of this.questions) {
+                        entry.zone = entry.zone.replace(/_/g, " ");
                         if (entry.Choices !== null) {
                             entry.Choices = entry.Choices.replace(/\|\_\|/g, ", ");
                         }
+                        this.empty = false;
                         this.loaded = true;
                         this.dataSource = new MatTableDataSource<Question>(this.questions);
+                        this.changeDetect.markForCheck();
                     }
                 }
             })
             .catch((err) => {
+                this.empty = true;
+                this.loaded = false;
+                this.changeDetect.markForCheck();
                 console.log(err)
             })
     }
@@ -107,10 +122,21 @@ export class DashboardZonesComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result && (result.update === true)) {
+            if (result && (result.delete === true)) {
+                let index = this.questions.findIndex(q => q.id === result.old.id);
+                if (index !== -1) {
+                    this.questions.splice(index, 1);
+                    this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+                }
+            } else if (result && (result.update === true)) {
                 let index = this.questions.findIndex(question => question.id === result.old.id);
                 this.questions[index] = result.new; // Replaces object
-                this.dataSource = new MatTableDataSource<Question>(this.questions); // Sets a new listener for the table
+                if (this.questions.length === 0) {
+                    this.empty = true;
+                    this.changeDetect.markForCheck();
+                } else {
+                    this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+                }
                 let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
                 this.editInfo.editQuestion(update)
                     .then((result) => {
@@ -122,14 +148,21 @@ export class DashboardZonesComponent implements OnInit {
                         console.log(err);
                     })
             }
+        })
+    }
+
+    openCreateDialog(): void {
+        let dialogRef = this.dialog.open(CreateQuestionDialogComponent, {
+            width: '700px',
+            data: {
+                branch: this.branchName,
+                zone: this.zones[this.selectedTab].zone
+            }
         });
-    }
 
-    highlight(row) {
-        this.selectedRowIndex = row.id;
-    }
-
-    normallight(row) {
-        this.selectedRowIndex = -1;
+        dialogRef.afterClosed().subscribe(result => {
+            this.questions.push(result);
+            this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
+        });
     }
 }
