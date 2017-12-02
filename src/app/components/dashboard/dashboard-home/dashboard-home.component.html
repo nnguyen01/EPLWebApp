@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+
+<!-- Creates individual cards for libraries/ branch --> 
 <div class="main overflow-content">
     <mat-grid-list cols="3" rowHeight="250px" gutterSize="16" style="margin:16px">
         <mat-grid-tile *ngFor="let library of libraries" class="container" [routerLink]="branchLink ? '/dashboard/' +library.branch : null">
-            <img src={{library.iLink}} alt="Library" class="image-hover">
-            <div class="text-hover unselectable">
+            
+			<!-- Image of branch -->
+			<img src={{library.iLink}} alt="Library" class="image-hover">
+            
+			<!-- Displays the text when user hovers mouse over this card --> 
+			<div class="text-hover unselectable">
                 <span routerLink="/dashboard/{{library.branch}}" class="unselectable">
                     <font face="Roboto" size="3" color="#4353FF">
                         <b>View Zones</b>
@@ -12,23 +19,33 @@
                     </font>
                 </span>
             </div>
+			
+			<!-- Displays icons when the user hovers mouse over this card --> 
+			<!-- Handles the actions for when user clicks on the icon --> 
             <mat-grid-tile-header class="header-hover">
                 <span mat-line></span>
                 <span mat-line></span>
-                <button mat-icon-button (click)="openEditDialog(library)">
+               
+			   <!-- Edit icon -->
+			   <button mat-icon-button (click)="openEditDialog(library)">
                     <mat-icon matTooltip="Edit branch" matTooltipPosition="above" svgIcon="edit">
                     </mat-icon>
                 </button>
+				
+				<!-- Delete icon -->
                 <button mat-icon-button (click)="openDeleteDialog(library)">
                     <mat-icon matTooltip="Delete branch" matTooltipPosition="above" svgIcon="delete">
                     </mat-icon>
-                </button>
+                </button>	
             </mat-grid-tile-header>
+			
+			<!-- Display library name -->
             <mat-grid-tile-footer routerLink="/dashboard/{{library.branch}}">
                 <font face="Roboto" mat-line>
                     {{library.branch}}
                 </font>
             </mat-grid-tile-footer>
+			
         </mat-grid-tile>
     </mat-grid-list>
 </div>

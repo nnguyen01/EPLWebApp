@@ -1,3 +1,7 @@
+/**
+	Contains all routes of app except child routes
+*/
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

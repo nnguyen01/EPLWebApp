@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+
+<!-- Creates card, and handles actions for zones --> 
 <mat-card class="main">
+
+	<!-- A create button for when there are no zones in branch -->
     <button mat-raised-button color="primary" *ngIf="zones.length === 0" tabindex="-1" (click)="openCreateZoneDialog()">
         <font>Create</font>
     </button>
+	
+	<!-- Tab menu, where each tab is a zone. Each tab contains zone information -->
     <mat-tab-group #tabGroup class="tab-group" (selectedTabChange)="tabChanged($event)" *ngIf="zones.length !== 0">
         <mat-tab *ngFor="let zone of zones" label="{{zone.zone}}">
             <mat-card-content>
@@ -14,6 +21,7 @@
                                     <input matInput placeholder="Zone" value="{{zone.zone}}" disabled>
                                 </mat-form-field>
                             </td>
+							
                             <td>
                                 <mat-form-field style="width: 100%">
                                     <input matInput placeholder="Category" value="{{zone.category}}" disabled>
@@ -21,6 +29,7 @@
                             </td>
                         </tr>
                     </table>
+					
                     <mat-form-field class="half-width">
                         <input matInput placeholder="Estimote Beacon ID" value="{{zone.beaconID}}" disabled>
                     </mat-form-field>
@@ -32,6 +41,7 @@
                                     <input matInput placeholder="Branch" value="{{zone.branch}}" disabled>
                                 </mat-form-field>
                             </td>
+							
                             <td>
                                 <mat-form-field class="full-width">
                                     <input matInput maxLength="7" placeholder="Color" value="{{zone.color}}" disabled>
@@ -40,9 +50,11 @@
                         </tr>
                     </table>
                 </form>
+				
                 <button mat-raised-button color="primary" tabindex="-1" (click)="openCreateZoneDialog()">
                     <font>Create</font>
                 </button>
+				
                 <button mat-raised-button color="warn" tabindex="-1" (click)="openEditZoneDialog(zone)">
                     <font>Edit</font>
                 </button>
@@ -51,21 +63,30 @@
     </mat-tab-group>
 </mat-card>
 
+<!-- Toolbar for questions. Has add question button. -->
 <mat-toolbar color="B39DDB">
     <mat-toolbar-row>
         <span>Questions: </span>
         <span class="spacer"></span>
+		
+		<!-- Add question button -->
         <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateQuestionDialog()">
             <mat-icon svgIcon="add">
             </mat-icon>
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
+
+<!-- Progress bar (Loading bar) -->
 <mat-progress-bar mode="indeterminate" *ngIf="!loaded && !empty"></mat-progress-bar>
 <mat-progress-bar mode="buffer" *ngIf="empty"></mat-progress-bar>
+
+<!-- Handles the case for when there are no questions related to the zone -->
 <mat-card *ngIf="empty" class="main">
     <div layout-align>No Questions Available</div>
 </mat-card>
+
+<!-- Displays questions and its data related to the zone -->
 <div class="table-container mat-elevation-z8" *ngIf="loaded">
     <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="Prompt">
@@ -94,9 +115,11 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditQuestionDialog(row)" (mouseenter)="highlight(row)"
-            (mouseleave)="normallight(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}"></mat-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditQuestionDialog(row)" (mouseenter)="highlight(row)"
+            (mouseleave)="normallight(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}">
+		</mat-row>
     </mat-table>
-    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-    </mat-paginator>
+	
+	<!-- Select the number of questions to display -->
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>
