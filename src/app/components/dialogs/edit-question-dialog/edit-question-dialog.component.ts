@@ -1,3 +1,6 @@
+/**
+	Edits question and updates database 
+*/
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry } from '@angular/material';

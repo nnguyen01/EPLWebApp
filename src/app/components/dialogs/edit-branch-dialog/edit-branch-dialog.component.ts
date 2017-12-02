@@ -1,3 +1,6 @@
+/**
+	Edits branch
+*/
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatIconRegistry, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
