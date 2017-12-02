@@ -1,17 +1,20 @@
-import { Component, OnInit, Input, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component, OnInit, Input, HostBinding,
+    ChangeDetectionStrategy, ChangeDetectorRef,
+    ViewChild
+} from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry } from '@angular/material';
+import { MatTabChangeEvent, MatTableDataSource, MatDialog, MatIconRegistry, MatPaginator } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { slideInDownAnimation } from '../../../animations';
 
 import { CreateZoneDialogComponent } from '../../dialogs/create-zone-dialog/create-zone-dialog.component'
 import { CreateQuestionDialogComponent } from '../../dialogs/create-question-dialog/create-question-dialog.component';
 import { EditQuestionDialogComponent } from '../../dialogs/edit-question-dialog/edit-question-dialog.component';
-import { ZoneDialogComponent } from '../../dialogs/zone-dialog/zone-dialog.component';
+import { EditZoneDialogComponent } from '../../dialogs/edit-zone-dialog/edit-zone-dialog.component';
 
 import { GetInfoService } from '../../../services/get-info.service';
-import { EditInfoService } from '../../../services/edit-info.service';
 
 import { Zone } from '../../../models/zone';
 import { Question } from '../../../models/question';
@@ -28,11 +31,11 @@ export class DashboardZonesComponent implements OnInit {
     @HostBinding('@routeAnimation') routeAnimation = true;
     @HostBinding('style.display') display = 'block';
     @HostBinding('style.position') position = 'relative';
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     branchName: string;
     zones: Zone[] = [];
     questions: Question[] = [];
-    emptyZones: boolean = true;
     empty: boolean = false; // Shows empty message
     loaded: boolean = false; // Loads the questions once true
     selectedRowIndex: number = -1;
@@ -45,10 +48,8 @@ export class DashboardZonesComponent implements OnInit {
         this.loaded = false;
         this.selectedTab = tabChangeEvent.index;
         if (this.zones != null) {
-            this.emptyZones = true;
             this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
         } else {
-            this.emptyZones = false;
             this.changeDetect.markForCheck();
         }
     }
@@ -56,7 +57,6 @@ export class DashboardZonesComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private changeDetect: ChangeDetectorRef,
-        private editInfo: EditInfoService,
         private getInfo: GetInfoService,
         public dialog: MatDialog,
         private iconRegistry: MatIconRegistry,
@@ -108,6 +108,7 @@ export class DashboardZonesComponent implements OnInit {
                         this.empty = false;
                         this.loaded = true;
                         this.dataSource = new MatTableDataSource<Question>(this.questions);
+                        this.dataSource.paginator = this.paginator;
                         this.changeDetect.markForCheck();
                     }
                 }
@@ -121,8 +122,7 @@ export class DashboardZonesComponent implements OnInit {
     }
 
     openEditZoneDialog(zone: Zone): void {
-        console.log(zone);
-        let dialogRef = this.dialog.open(ZoneDialogComponent, {
+        let dialogRef = this.dialog.open(EditZoneDialogComponent, {
             width: '700px',
             data: {
                 zone: zone
@@ -138,21 +138,9 @@ export class DashboardZonesComponent implements OnInit {
                 }
             } else if (result && (result.update === true)) {
                 let index = this.zones.findIndex(zone => zone.zone === result.old.zone);
-                this.questions[index] = result.new; // Replaces object
-                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
-                this.editInfo.editZone(update.beaconID, result.old.zone, update.zone, result.old.branch,
-                    update.branch, update.category, update.color)
-                    .then((result) => {
-                        if (result.status === 'success') {
-                            console.log("success");
-                            this.changeDetect.markForCheck();
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+                this.zones[index] = result.new;
+                this.changeDetect.markForCheck();
             }
-            this.changeDetect.markForCheck();
         });
     }
 
@@ -169,8 +157,10 @@ export class DashboardZonesComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.zones.push(result);
-            this.changeDetect.markForCheck();
+            if (result) {
+                this.zones.push(result);
+                this.changeDetect.markForCheck();
+            }
         })
         this.changeDetect.markForCheck();
 
@@ -193,23 +183,12 @@ export class DashboardZonesComponent implements OnInit {
                 }
             } else if (result && (result.update === true)) {
                 let index = this.questions.findIndex(question => question.id === result.old.id);
-                this.questions[index] = result.new; // Replaces object
+                this.questions[index] = result.new;
                 if (this.questions.length === 0) {
                     this.empty = true;
-                    this.changeDetect.markForCheck();
                 } else {
                     this.questionDisplay(this.branchName, this.zones[this.selectedTab].zone);
                 }
-                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
-                this.editInfo.editQuestion(update)
-                    .then((result) => {
-                        if (result.status === 'success') {
-                            console.log("success");
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
             }
         })
     }

@@ -10,8 +10,17 @@ export class EditInfoService {
     private headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 
-    editBranch() {
-        
+    editBranch(oldBranch: string, newBranch: string, iLink: string): Promise<any> {
+        oldBranch = encodeURIComponent(oldBranch.trim());
+        newBranch = encodeURIComponent(newBranch.trim());
+        if (iLink == null) {
+            iLink = "%20"
+        } else {
+            iLink = encodeURIComponent(iLink.trim());
+        }
+        let urlParam = '/' + oldBranch + '/' + newBranch + '/' + iLink;
+        let url: string = `${this.BASE_URL}/updateBranch` + urlParam;
+        return this.http.post(url, { headers: this.headers }).toPromise();
     }
 
     editZone(beaconID: string, oldZone: string,
@@ -21,7 +30,6 @@ export class EditInfoService {
         newZone = newZone.replace(/\s/g, "_"); // Revert only for query
         oldZone = encodeURIComponent(oldZone.trim());
         newZone = encodeURIComponent(newZone.trim());
-        color = encodeURIComponent(color.trim());
         if (category == null) {
             category = "%20";
         } else {
@@ -41,6 +49,9 @@ export class EditInfoService {
     editQuestion(question: Question): Promise<any> {
         if (question.Choices != null || question.Choices != "") {
             question.Choices = question.Choices.replace(/\,/g, "|_|");
+        }
+        if (question.zone != null) {
+            question.zone = question.zone.replace(/\s/g, "_");
         }
         for (const property in question) {
             if (question[property] == null || question[property] == "") {

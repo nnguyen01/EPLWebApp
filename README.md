@@ -2,22 +2,11 @@
 
 # Installation
 
-1. Install npm through node.js (https://nodejs.org/en/)
+1. Install npm through [node.js](https://nodejs.org/en/download/)
 2. `npm install -g @angular/cli`
-3. `git clone`
-4. cd into the directory
+3. `git clone https://github.com/nnguyen01/EPLWebApp.git`
+4. `cd EPLWebApp`
 5. `npm install`
-6. `ng serve --aot`
-
-# Updating from Angular 4 to Angular 5
-
-https://angular-update-guide.firebaseapp.com/
-
-1. `npm install @angular/animations@'^5.0.0' @angular/common@'^5.0.0' @angular/compiler@'^5.0.0' @angular/compiler-cli@'^5.0.0' @angular/core@'^5.0.0' @angular/forms@'^5.0.0' @angular/http@'^5.0.0' @angular/platform-browser@'^5.0.0' @angular/platform-browser-dynamic@'^5.0.0' @angular/platform-server@'^5.0.0' @angular/router@'^5.0.0' typescript@2.4.2 rxjs@'^5.5.2'`
-
-2. `npm install typescript@2.4.2 --save-exact`
-
-3. `ng serve --aot`
 
 # Development server
 
@@ -27,10 +16,6 @@ Run `ng serve --aot` for a dev server. Navigate to `http://localhost:4200/`. The
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
 # Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -39,15 +24,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# Updating Web App (Cybera VM)
-### On your machine (local)
-1. Build the web app using 
-`ng build --prod`
-2. Push new build to github 
-### On Cybera VM
-3. Pull the new changes on github.
-4. Navigate to where the dist folder is located 
-5. Copy all contents of the dist folder into /var/www/html/ using
-`sudo cp -a dist/* /var/www/html/`
-### On your machine
-6. To test and see web app go to http://162.246.156.95/ 
+# Deployment information on a Production Server
+1. Complete the installation
+2. `git pull origin master`
+3. `ng build --prod`
+4. `cd dist`
+5. `sudo cp -a dist/* /var/www/html/`
+6. Test on http://162.246.156.95/ (for Cybera) or the IP address of your production server

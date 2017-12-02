@@ -65,30 +65,15 @@ export class DashboardHomeComponent implements OnInit {
         this.branchLink = false;
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
             width: '400px',
-            data: {
-                data: library
-            }
+            data: library
         });
 
         dialogRef.afterClosed().subscribe(result => {
             this.branchLink = true;
-            /*
             if (result && (result.update === true)) {
-                let index = this.libraries.findIndex(zone => zone.zone === result.old.zone);
-                this.libraries[index] = result.new; // Replaces object
-                let update = JSON.parse(JSON.stringify(result.new)); // Erases the reference
-                this.editInfo.editBranch(update.beaconID, result.old.zone, )
-                    .then((result) => {
-                        if (result.status === 'success') {
-                            console.log("success");
-                            this.changeDetect.markForCheck();
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+                let index = this.libraries.findIndex(lib => lib.branch === result.old.branch);
+                this.libraries[index] = result.new; // Replaces object 
             }
-            */
         });
     }
 

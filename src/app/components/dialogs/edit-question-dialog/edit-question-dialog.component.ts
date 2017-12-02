@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry } from '@angular/materia
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { DeleteInfoService } from '../../../services/delete-info.service';
+import { EditInfoService } from '../../../services/edit-info.service';
 
 import { Question } from '../../../models/question';
 
@@ -21,6 +22,7 @@ export class EditQuestionDialogComponent {
     constructor( @Inject(MAT_DIALOG_DATA) public data: any,
         private iconRegistry: MatIconRegistry,
         private dialogRef: MatDialogRef<EditQuestionDialogComponent>,
+        private editInfo: EditInfoService,
         private deleteInfo: DeleteInfoService,
         private sanitizer: DomSanitizer) {
         iconRegistry
@@ -50,6 +52,15 @@ export class EditQuestionDialogComponent {
         if (this.question.qType !== 'multChoice') {
             this.question.Choices = '';
         }
+        this.editInfo.editQuestion(this.question)
+            .then((result) => {
+                if (result.status === 'success') {
+                    console.log("success");
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
         this.dialogRef.close({ update: true, new: this.question, old: this.originalQuestion });
     }
 
@@ -67,6 +78,6 @@ export class EditQuestionDialogComponent {
             .catch(err => {
                 console.log(err);
             })
-        this.dialogRef.close({ delete: true, old: this.originalQuestion});
+        this.dialogRef.close({ delete: true, old: this.originalQuestion });
     }
 }

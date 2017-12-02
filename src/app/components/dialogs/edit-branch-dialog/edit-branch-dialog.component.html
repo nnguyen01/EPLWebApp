@@ -1,16 +1,16 @@
-<!-- <h1 mat-dialog-title>
+<h1 mat-dialog-title>
     <mat-icon svgIcon="edit"></mat-icon>
     {{library.branch}}
 </h1>
 <div mat-dialog-content>
     <form>
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Name" value="{{library.branch}}" [formControl]="branch" required>
+            <input matInput placeholder="Name" [(ngModel)]="library.branch" name="library.branch" [formControl]="branch" required>
             <mat-error *ngIf="branch.dirty || branch.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Image Link" value="{{library.iLink}}">
+            <input matInput placeholder="Image Link" [(ngModel)]="library.iLink" name="library.iLink">
         </mat-form-field>
     </form>
 </div>
@@ -21,4 +21,4 @@
     <button mat-raised-button tabindex="-1" (click)="cancel()">
         <font>Cancel</font>
     </button>
-</div> -->
+</div>

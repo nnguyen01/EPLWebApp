@@ -5,7 +5,7 @@
     <form>
         <br>
         <mat-form-field class="full-width">
-            <input matInput tabindex="-1" placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt">
+            <input matInput tabindex="-1" placeholder="Prompt" [(ngModel)]="question.Prompt" name="question.Prompt" required>
         </mat-form-field>
         <mat-form-field *ngIf='question.qType === "multChoice"' class="full-width">
             <input matInput tabindex="-1" placeholder="Choices" [(ngModel)]="question.Choices" name="question.Choices">
@@ -14,12 +14,12 @@
             <tr>
                 <td>
                     <mat-form-field class="half-width">
-                        <input tabindex="-1" matInput placeholder="Solution" [(ngModel)]="question.Solution" name="question.Solution">
+                        <input tabindex="-1" matInput placeholder="Solution" [(ngModel)]="question.Solution" name="question.Solution" required>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field class="half-width">
-                        <mat-select tabindex="-1" placeholder="Question Type" [(value)]="question.qType">
+                        <mat-select tabindex="-1" placeholder="Question Type" [(value)]="question.qType" required>
                             <mat-option value="writInput">
                                 Written Input
                             </mat-option>
