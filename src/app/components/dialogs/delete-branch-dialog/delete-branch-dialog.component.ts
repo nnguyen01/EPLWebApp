@@ -11,18 +11,24 @@ import { DeleteInfoService } from '../../../services/delete-info.service';
 export class DeleteBranchDialogComponent {
 
     constructor( @Inject(MAT_DIALOG_DATA) public library: LibraryBranch,
+        private dialogRef: MatDialogRef<DeleteBranchDialogComponent>,
         private deleteInfo: DeleteInfoService) {
+    }
+
+    cancel() {
+        this.dialogRef.close(false);
     }
 
     delete() {
         this.deleteInfo.deleteBranch(this.library.branch)
-        .then(result => {
-            if (result.status === 'success') {
-                console.log(result);
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(result => {
+                if (result.status === 'success') {
+                    console.log(result);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        this.dialogRef.close(true);
     }
 }
