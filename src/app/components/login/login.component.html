@@ -1,3 +1,4 @@
+<!-- Login form -->
 <mat-card class="main">
 	<mat-card-header>
 		<img mat-card-image src="assets/EPL_Logo.png">
@@ -5,6 +6,7 @@
 	
 	<mat-card-content>
 		<form #Login="ngForm" (ngSubmit)="onLogin(Login)" novalidate>
+				<!-- Email -->
 				<mat-form-field class="full-width">
 					<input matInput id="email" type="email" placeholder="Email" required [(ngModel)]="user.email" name="email" #email="ngModel">
 					<!--<mat-error *ngIf="emailFormControl.hasError('email')">
@@ -15,6 +17,7 @@
 					</mat-error>
 				</mat-form-field>
 
+				<!-- Password -->
 				<mat-form-field class="full-width">
 					<input matInput id="password" type="password" placeholder="Password" required [(ngModel)]="user.password" name="password" #password="ngModel">
 					<mat-error *ngIf="emailFormControl.hasError('required')">

@@ -1,3 +1,11 @@
+/**
+	Zones
+
+	Handles zone information
+		- Gets zone and question information
+		- Add, Delete and Update zones and their related questions
+*/
+
 import {
     Component, OnInit, Input, HostBinding,
     ChangeDetectionStrategy, ChangeDetectorRef,

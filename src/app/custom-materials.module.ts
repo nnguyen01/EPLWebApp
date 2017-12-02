@@ -1,3 +1,7 @@
+/**
+	Contains the material UI elements
+*/
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {

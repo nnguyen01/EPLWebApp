@@ -1,3 +1,9 @@
+/**
+	Dashboard Router
+
+	Contains all the routes related to the dashboard
+*/
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
