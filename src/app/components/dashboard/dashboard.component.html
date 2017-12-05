@@ -1,5 +1,7 @@
+<!-- Top navigation bar -->
 <mat-toolbar color="primary" class="app-toolbar mat-elevation-z2">
     <mat-toolbar-row class="mat-toolbar-row">
+		<!-- Menu -->
         <button class="hamburger mat-button" mat-button="" layout-align="start center" (click)="!sidenav.toggle()">
             <mat-icon class="mat-icon-button" role="img" svgicon="menu" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24">
@@ -7,19 +9,23 @@
                 </svg>
             </mat-icon>
         </button>
+		
         <a class="nav-link home" href="/">
             <img alt="Home" title="Home" src="assets/EPL_Logo.png">
         </a>
+		
         <span></span>
-        <span class="spacer"></span>
+		<span class="spacer"></span>
+		
+		<!-- Logo -->
         <button mat-raised-button mat-ripple matRippleSpeedFactor="1" class="container" color="primary" (click)="openCreateDialog()">
-            <mat-icon svgIcon="add">
-            </mat-icon>
+            <mat-icon svgIcon="add"></mat-icon>
             New Library
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
 
+<!-- Side naviagation bar -->
 <mat-sidenav-container position="end" class="sidenav-container" overflow="hidden">
     <mat-sidenav #sidenav mode="side" opened="true" fixedInViewport="fixed" fixedTopGap="64">
         <mat-nav-list>
@@ -30,6 +36,7 @@
                 Questions
             </mat-list-item> -->
         </mat-nav-list>
+		
         <mat-nav-list class="bottom">
             <mat-list-item (click)="onLogout()">
                 <a class="unselectable">
@@ -37,6 +44,8 @@
                 </a>
             </mat-list-item>
         </mat-nav-list>
+		
     </mat-sidenav>
+	
     <router-outlet></router-outlet>
 </mat-sidenav-container>

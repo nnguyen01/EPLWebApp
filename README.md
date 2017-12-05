@@ -2,7 +2,7 @@
 
 # Installation
 
-1. Install npm through node.js (https://nodejs.org/en/)
+1. Install npm through [node.js](https://nodejs.org/en/download/)
 2. `npm install -g @angular/cli`
 3. `git clone https://github.com/nnguyen01/EPLWebApp.git`
 4. `cd EPLWebApp`
@@ -16,10 +16,6 @@ Run `ng serve --aot` for a dev server. Navigate to `http://localhost:4200/`. The
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
 # Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -28,15 +24,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# Updating Web App (Cybera VM)
-### On your machine (local)
-1. Build the web app using 
-`ng build --prod`
-2. Push new build to github 
-### On Cybera VM
-3. Pull the new changes on github.
-4. Navigate to where the dist folder is located 
-5. Copy all contents of the dist folder into /var/www/html/ using
-`sudo cp -a dist/* /var/www/html/`
-### On your machine
-6. To test and see web app go to http://162.246.156.95/ 
+# Deployment information on a Production Server
+1. Complete the installation
+2. `git pull origin master`
+3. `ng build --prod`
+4. `cd dist`
+5. `sudo cp -a dist/* /var/www/html/`
+6. Test on http://162.246.156.95/ (for Cybera) or the IP address of your production server

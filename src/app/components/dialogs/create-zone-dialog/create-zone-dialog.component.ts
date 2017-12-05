@@ -1,7 +1,9 @@
+/**
+	Creates new zone
+*/
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
 
 import { CreateInfoService } from '../../../services/create-info.service';
 

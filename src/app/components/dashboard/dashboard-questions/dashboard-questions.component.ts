@@ -1,3 +1,9 @@
+/**
+	Questions Tab
+	
+	Not implemented yet. Basic form structure and routing is complete
+*/
+
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
