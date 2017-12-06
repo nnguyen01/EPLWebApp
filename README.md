@@ -28,6 +28,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 1. Complete the installation
 2. `git pull origin master`
 3. `ng build --prod`
-4. `cd dist`
-5. `sudo cp -a dist/* /var/www/html/`
-6. Test on http://162.246.156.95/ (for Cybera) or the IP address of your production server
+4. `sudo cp -a dist/* /var/www/html/`
+5. Test on http://162.246.156.95/ (for Cybera) or the IP address of your production server
