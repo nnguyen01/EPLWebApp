@@ -1,6 +1,6 @@
 .main {
     height: 100%;
-    overflow: hidden !important;
+    margin-top: 80px;
 }
 
 :focus {
@@ -30,8 +30,17 @@
 
 .mat-grid-tile .mat-grid-tile-footer {
     height: 23%;
-    background:#4353FF;
+    background:#2962FF;
 }
+
+.nav-active {
+    background-color: pink;
+    color: purple;
+}
+  
+  .nav-active md-icon {
+    color: purple;
+} 
 
 img {
     height: 100%;

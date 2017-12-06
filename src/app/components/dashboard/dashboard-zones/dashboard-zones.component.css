@@ -15,7 +15,8 @@
 
 .main {
     position: relative;
-    overflow-y: hidden; 
+    overflow: hidden;
+    margin-top: 80px;
 }
 
 .unselectable {

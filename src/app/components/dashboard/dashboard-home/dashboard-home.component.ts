@@ -27,8 +27,9 @@ import { EditInfoService } from '../../../services/edit-info.service';
     styleUrls: ['./dashboard-home.component.css']
 })
 export class DashboardHomeComponent implements OnInit {
-	
+
     libraries: LibraryBranch[] = [];
+    filteredLibraries: LibraryBranch[] = [];
     branchLink: boolean = true; // Used to dynamically set the routerLink
     subscription: Subscription;
 
@@ -45,9 +46,9 @@ export class DashboardHomeComponent implements OnInit {
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/garbage.svg'))
             .addSvgIcon('edit',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit-pencil.svg'));
-		}
+    }
 
-	/** Gets branch information from database **/
+    /** Gets branch information from database **/
     ngOnInit(): void {
         this.getInfo.getBranch()
             .then(library => {
@@ -60,7 +61,7 @@ export class DashboardHomeComponent implements OnInit {
             })
     }
 
-	/** Get beanches and sort in alphabetical order **/
+    /** Get beanches and sort in alphabetical order **/
     ngAfterContentInit() {
         this.subscription = this.dataService.dialogSource$.subscribe(
             newLibrary => {
@@ -71,10 +72,22 @@ export class DashboardHomeComponent implements OnInit {
         )
     }
 
-	/** 
-		Display a popup window to allow user to edit tht branch.
-		User can edit the branch name and the image link associated with that branch
-	**/
+    assignCopy() {
+        this.filteredLibraries = Object.assign([], this.libraries);
+    }
+    
+    filterItem(value) {
+        if (!value) this.assignCopy(); //when nothing has typed
+        this.filteredLibraries = Object.assign([], this.libraries).filter(
+            item => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+        )
+        this.assignCopy();
+    }
+
+    /** 
+        Display a popup window to allow user to edit tht branch.
+        User can edit the branch name and the image link associated with that branch
+    **/
     openEditDialog(library: LibraryBranch): void {
         this.branchLink = false;
         let dialogRef = this.dialog.open(EditBranchDialogComponent, {
@@ -82,7 +95,7 @@ export class DashboardHomeComponent implements OnInit {
             data: library
         });
 
-		/* Update the branch info */
+        /* Update the branch info */
         dialogRef.afterClosed().subscribe(result => {
             this.branchLink = true;
             if (result && (result.update === true)) {
@@ -92,10 +105,10 @@ export class DashboardHomeComponent implements OnInit {
         });
     }
 
-	/** 
-		Display a popup window to confirm deletion of branch.
-		If confirmed (User click Yes), delete the branch.
-	**/
+    /** 
+        Display a popup window to confirm deletion of branch.
+        If confirmed (User click Yes), delete the branch.
+    **/
     openDeleteDialog(library: LibraryBranch): void {
         this.branchLink = false;
         let dialogRef = this.dialog.open(DeleteBranchDialogComponent, {
@@ -105,7 +118,7 @@ export class DashboardHomeComponent implements OnInit {
             }
         });
 
-		/* Delete branch if user confirms (selects Yes) */
+        /* Delete branch if user confirms (selects Yes) */
         dialogRef.afterClosed().subscribe(result => {
             if (result == true) {
                 const index: number = this.libraries.indexOf(library);
@@ -117,7 +130,7 @@ export class DashboardHomeComponent implements OnInit {
         });
     }
 
-	/** Prevent memory leak when component destroyed **/
+    /** Prevent memory leak when component destroyed **/
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }

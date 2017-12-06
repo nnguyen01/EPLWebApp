@@ -30,8 +30,8 @@ export class DashboardComponent implements OnInit {
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer) {
         iconRegistry
-            .addSvgIcon('menu',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/img/menu.svg'))
+            .addSvgIcon('dashboard',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/dashboard.svg'))
             .addSvgIcon('add',
             sanitizer.bypassSecurityTrustResourceUrl('assets/img/add.svg'));
     }

@@ -1,8 +1,10 @@
 .app-toolbar {
-    position: sticky;
-    position: -webkit-sticky; 
+    position: fixed;
+    position: -webkit-fixed;
     top: 0;
-    z-index: 1000; 
+    z-index: 999; 
+    background-color: white;
+    border-bottom: 1px solid #2962FF;
 }
 
 .mat-elevation-z2 {
@@ -13,16 +15,21 @@
 .bottom {
     position: absolute;
     width: 100%;
-    bottom: 70px;
+    bottom: 1px;
 }
 
 .spacer {
     flex: 1 1 auto;
 }
-  
+
+.background {
+    background: "#171932"
+}
+
 mat-sidenav {
-    width: 200px;
-    border-right: 1px solid #BDBDBD;
+    position: fixed;
+    width: 270px;
+    border-right: 1px solid #2962FF;
 }
 
 .mat-sidenav-container {
@@ -34,11 +41,8 @@ mat-sidenav {
     overflow: hidden;
 }
 
-.mat-drawer-content {
-    overflow: hidden;
-}
-
 .mat-sidenav {
+    text-align: center;
     min-width: 250px;
     top: 0;
     bottom: 0;
@@ -48,10 +52,6 @@ mat-sidenav {
     overflow: hidden;
 }
 
-.mat-toolbar {
-    flex: 0;
-}
-
 .hamburger.mat-button {
     height: 100%;
     margin: 0;
@@ -59,9 +59,9 @@ mat-sidenav {
 }
 
 .container {
-    width: 140px;
+    width: 160px;
     border-radius: 30px;
-    margin-right: 20px;
+    margin-right: 280px;
 }
 
 .mat-toolbar-row {
@@ -78,10 +78,9 @@ mat-sidenav {
 
 .nav-link.home img {
     position: relative;
-    margin-top: -24px;
-    margin-right: 20px;
-    top: 12px;
-    height: 40px;
+    top: 20px;
+    width: 200px;
+    height: 50px;
 }
 
 .unselectable {
